@@ -1,0 +1,181 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Unit Testing · React-Admin Documentation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;By default, react-admin acts as a declarative admin configuration: list some resources, define their controllers and, plug some built-in components or your own to define their fields or inputs.&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Unit Testing · React-Admin Documentation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://marmelab.github.io/ra-doc-usaurus/"/><meta property="og:description" content="&lt;p&gt;By default, react-admin acts as a declarative admin configuration: list some resources, define their controllers and, plug some built-in components or your own to define their fields or inputs.&lt;/p&gt;
+"/><meta property="og:image" content="https://marmelab.github.io/ra-doc-usaurus/img/logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://marmelab.github.io/ra-doc-usaurus/img/logo.png"/><link rel="shortcut icon" href="/ra-doc-usaurus/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/ra-doc-usaurus/css/main.css"/><script src="/ra-doc-usaurus/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ra-doc-usaurus/"><img class="logo" src="/ra-doc-usaurus/img/logo.png" alt="React-Admin Documentation"/><h2 class="headerTitleWithLogo">React-Admin Documentation</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/ra-doc-usaurus/docs/tutorial" target="_self">Documentation</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Table of contents</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Table of contents</h3><ul class=""><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/readme">Read Me</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/tutorial">Tutorial</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/dataprovider">Data Providers</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/admin">&lt;Admin&gt;</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/resource">&lt;Resource&gt;</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/list">&lt;List&gt; View</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/show">&lt;Show&gt; View</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/fields">&lt;Field&gt; Components</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/createandedit">&lt;Create&gt; and &lt;Edit&gt; Views</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/inputs">&lt;Input&gt; Components</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/authentication">Authentication</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/authorization">Authorization</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/actions">Querying the API</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/translation">Translation</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/customapp">Including in Another App</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/reference">Reference</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/faq">FAQ</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/ecosystem">Ecosystem</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/ra-doc-usaurus/docs/unittesting">Unit Testing</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/advancedtutorials">Advanced Tutorials</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/labs">Labs</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Unit Testing</h1></header><article><div><span><p>By default, react-admin acts as a declarative admin configuration: list some resources, define their controllers and, plug some built-in components or your own to define their fields or inputs.</p>
+<p>Thus, unit testing isn't really needed nor recommended at first, because the internal API of the framework is already tested by its maintainers and each custom component can be tested by its own by mocking react-admin. (<a href="https://jestjs.io/docs/en/manual-mocks#mocking-node-modules">see how to do so with Jest</a>)</p>
+<p>On the contrary, it is recommended to write end-to-end tests to secure your most common scenario at least.</p>
+<p>That being said, there are still some cases, listed below, where a unit test can be useful.</p>
+<h2><a class="anchor" aria-hidden="true" id="testing-custom-views"></a><a href="#testing-custom-views" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Testing Custom Views</h2>
+<p>One issue you may run into when attempting to render custom <code>Create</code> or <code>Edit</code> views is that you need to provide the component with the expected props contained within the react-admin redux store.</p>
+<p>Luckily, react-admin provides access to a <code>TestContext</code> wrapper component that can be used to initialise your component with many of the expected react-admin props:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { TestContext } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+<span class="hljs-keyword">import</span> { mount } <span class="hljs-keyword">from</span> <span class="hljs-string">'enzyme'</span>;
+<span class="hljs-keyword">import</span> MyCustomEditView <span class="hljs-keyword">from</span> <span class="hljs-string">'./my-custom-edit-view'</span>;
+
+describe(<span class="hljs-string">'MyCustomEditView'</span>, () =&gt; {
+    <span class="hljs-keyword">let</span> myCustomEditView;
+
+    beforeEach(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">const</span> defaultEditProps = {
+            <span class="hljs-attr">basePath</span>: <span class="hljs-string">'/'</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-string">'123'</span>,
+            <span class="hljs-attr">resource</span>: <span class="hljs-string">'foo'</span>,
+            <span class="hljs-attr">location</span>: {},
+            <span class="hljs-attr">match</span>: {},
+        };
+
+        myCustomEditView = mount(
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TestContext</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">MyCustomEditView</span> {<span class="hljs-attr">...defaultEditProps</span>} /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">TestContext</span>&gt;</span>
+        );
+    });
+
+    // Tests
+});
+</span></code></pre>
+<p>You can then provide additional props, as needed, to your component (such as the <code>defaultEditProps</code> provided above).</p>
+<p>At this point, your component should <code>mount</code> without errors and you can unit test your component.</p>
+<h2><a class="anchor" aria-hidden="true" id="enabling-reducers-to-ensure-actions-are-dispatched"></a><a href="#enabling-reducers-to-ensure-actions-are-dispatched" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Enabling reducers to ensure actions are dispatched</h2>
+<p>If you component relies on a a reducer, e.g. redux-form submission, you can enable reducers using the <code>enableReducers</code> prop:</p>
+<pre><code class="hljs css language-jsx">myCustomEditView = mount(
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TestContext</span> <span class="hljs-attr">enableReducers</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">MyCustomEditView</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">TestContext</span>&gt;</span></span>
+);
+</code></pre>
+<p>This means that reducers will work as they will within the app.  For example, you can now submit a form and redux-form will cause a re-render of your component.</p>
+<h2><a class="anchor" aria-hidden="true" id="spying-on-the-store-dispatch"></a><a href="#spying-on-the-store-dispatch" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Spying on the store 'dispatch'</h2>
+<p>If you are using <code>mapDispatch</code> within connected components, it is likely you will want to test that actions have been dispatched with the correct arguments.  You can return the <code>store</code> being used within the tests using a <code>renderProp</code>.</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">let</span> dispatchSpy;
+myCustomEditView = mount(
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TestContext</span>&gt;</span>
+        {({ store }) =&gt; {
+            dispatchSpy = jest.spyOn(store, 'dispatch');
+            return <span class="hljs-tag">&lt;<span class="hljs-name">MyCustomEditView</span> /&gt;</span>
+        }}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">TestContext</span>&gt;</span></span>,
+);
+
+it(<span class="hljs-string">'should send the user to another url'</span>, () =&gt; {
+    myCustomEditView.find(<span class="hljs-string">'.next-button'</span>).simulate(<span class="hljs-string">'click'</span>);
+    expect(dispatchSpy).toHaveBeenCalledWith(<span class="hljs-string">`/next-url`</span>);
+});
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="testing-permissions"></a><a href="#testing-permissions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Testing Permissions</h2>
+<p>As explained on the <a href="/ra-doc-usaurus/docs/authorization">Authorization page</a>, it's possible to manage permissions via the authentication provider in order to filter page and fields the users can see.</p>
+<p>In order to avoid regressions and make the design explicit to your co-workers, it's better to unit test which fields is supposed to be displayed or hidden for each permission.</p>
+<p>Here is an example with Jest and Enzyme, which is testing the <a href="https://github.com/marmelab/react-admin/blob/master/examples/simple/src/users/UserShow.js">User <code>show</code> page of the simple example</a>.</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// UserShow.spec.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { shallow } <span class="hljs-keyword">from</span> <span class="hljs-string">'enzyme'</span>;
+<span class="hljs-keyword">import</span> { Tab, TextField } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-keyword">import</span> UserShow <span class="hljs-keyword">from</span> <span class="hljs-string">'./UserShow'</span>;
+
+describe(<span class="hljs-string">'UserShow'</span>, () =&gt; {
+    describe(<span class="hljs-string">'As User'</span>, () =&gt; {
+        it(<span class="hljs-string">'should display one tab'</span>, () =&gt; {
+            <span class="hljs-keyword">const</span> wrapper = shallow(&lt;UserShow permissions="user" /&gt;);
+
+            const tab = wrapper.find(Tab);
+            expect(tab.length).toBe(1);
+        });
+
+        it('should show the user identity in the first tab', () =&gt; {
+            const wrapper = shallow(&lt;UserShow permissions="user" /&gt;);
+
+            const tab = wrapper.find(Tab);
+            const fields = tab.find(TextField);
+
+            expect(fields.at(0).prop('source')).toBe('id');
+            expect(fields.at(1).prop('source')).toBe('name');
+        });
+    });
+
+    describe('As Admin', () =&gt; {
+        it('should display two tabs', () =&gt; {
+            const wrapper = shallow(&lt;UserShow permissions="admin" /&gt;);
+
+            const tabs = wrapper.find(Tab);
+            expect(tabs.length).toBe(2);
+        });
+
+        it('should show the user identity in the first tab', () =&gt; {
+            const wrapper = shallow(&lt;UserShow permissions="admin" /&gt;);
+
+            const tabs = wrapper.find(Tab);
+            const fields = tabs.at(0).find(TextField);
+
+            expect(fields.at(0).prop('source')).toBe('id');
+            expect(fields.at(1).prop('source')).toBe('name');
+        });
+
+        it('should show the user role in the second tab', () =&gt; {
+            const wrapper = shallow(&lt;UserShow permissions="admin" /&gt;);
+
+            const tabs = wrapper.find(Tab);
+            const fields = tabs.at(1).find(TextField);
+
+            expect(fields.at(0).prop('source')).toBe('role');
+        });
+    });
+});
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/ra-doc-usaurus/docs/ecosystem"><span class="arrow-prev">← </span><span>Ecosystem</span></a><a class="docs-next button" href="/ra-doc-usaurus/docs/advancedtutorials"><span>Advanced Tutorials</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#testing-custom-views">Testing Custom Views</a></li><li><a href="#enabling-reducers-to-ensure-actions-are-dispatched">Enabling reducers to ensure actions are dispatched</a></li><li><a href="#spying-on-the-store-dispatch">Spying on the store 'dispatch'</a></li><li><a href="#testing-permissions">Testing Permissions</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/ra-doc-usaurus/" class="nav-home"><img src="/ra-doc-usaurus/img/logo.png" alt="React-Admin Documentation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/ra-doc-usaurus/docs/en/tutorial.html">Tutorials</a></div><div><h5>Community</h5><a href="http://stackoverflow.com/questions/tagged/react-admin" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/marmelab" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/marmelab/react-admin">GitHub</a><a class="github-button" href="https://github.com/marmelab/react-admin" data-icon="octicon-star" data-count-href="/marmelab/react-admin/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2019 Marmelab</section></footer></div><script src="http://localhost:undefined/livereload.js"></script></body></html>

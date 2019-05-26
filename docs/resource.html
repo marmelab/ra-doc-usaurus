@@ -1,0 +1,151 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>The &lt;Resource&gt; Component · React-Admin Documentation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;A &lt;code&gt;&amp;lt;Resource&amp;gt;&lt;/code&gt; component maps one API endpoint to a CRUD interface. For instance, the following admin app offers a read-only interface to the resources exposed by the JSONPlaceholder API at  &lt;a href=&quot;http://jsonplaceholder.typicode.com/posts&quot;&gt;&lt;code&gt;http://jsonplaceholder.typicode.com/posts&lt;/code&gt;&lt;/a&gt; and &lt;a href=&quot;http://jsonplaceholder.typicode.com/users&quot;&gt;&lt;code&gt;http://jsonplaceholder.typicode.com/users&lt;/code&gt;&lt;/a&gt;:&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="The &lt;Resource&gt; Component · React-Admin Documentation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://marmelab.github.io/ra-doc-usaurus/"/><meta property="og:description" content="&lt;p&gt;A &lt;code&gt;&amp;lt;Resource&amp;gt;&lt;/code&gt; component maps one API endpoint to a CRUD interface. For instance, the following admin app offers a read-only interface to the resources exposed by the JSONPlaceholder API at  &lt;a href=&quot;http://jsonplaceholder.typicode.com/posts&quot;&gt;&lt;code&gt;http://jsonplaceholder.typicode.com/posts&lt;/code&gt;&lt;/a&gt; and &lt;a href=&quot;http://jsonplaceholder.typicode.com/users&quot;&gt;&lt;code&gt;http://jsonplaceholder.typicode.com/users&lt;/code&gt;&lt;/a&gt;:&lt;/p&gt;
+"/><meta property="og:image" content="https://marmelab.github.io/ra-doc-usaurus/img/logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://marmelab.github.io/ra-doc-usaurus/img/logo.png"/><link rel="shortcut icon" href="/ra-doc-usaurus/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/ra-doc-usaurus/css/main.css"/><script src="/ra-doc-usaurus/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ra-doc-usaurus/"><img class="logo" src="/ra-doc-usaurus/img/logo.png" alt="React-Admin Documentation"/><h2 class="headerTitleWithLogo">React-Admin Documentation</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/ra-doc-usaurus/docs/tutorial" target="_self">Documentation</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Table of contents</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Table of contents</h3><ul class=""><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/readme">Read Me</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/tutorial">Tutorial</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/dataprovider">Data Providers</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/admin">&lt;Admin&gt;</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/ra-doc-usaurus/docs/resource">&lt;Resource&gt;</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/list">&lt;List&gt; View</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/show">&lt;Show&gt; View</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/fields">&lt;Field&gt; Components</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/createandedit">&lt;Create&gt; and &lt;Edit&gt; Views</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/inputs">&lt;Input&gt; Components</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/authentication">Authentication</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/authorization">Authorization</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/actions">Querying the API</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/translation">Translation</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/customapp">Including in Another App</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/reference">Reference</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/faq">FAQ</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/ecosystem">Ecosystem</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/unittesting">Unit Testing</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/advancedtutorials">Advanced Tutorials</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/labs">Labs</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">The &lt;Resource&gt; Component</h1></header><article><div><span><p>A <code>&lt;Resource&gt;</code> component maps one API endpoint to a CRUD interface. For instance, the following admin app offers a read-only interface to the resources exposed by the JSONPlaceholder API at  <a href="http://jsonplaceholder.typicode.com/posts"><code>http://jsonplaceholder.typicode.com/posts</code></a> and <a href="http://jsonplaceholder.typicode.com/users"><code>http://jsonplaceholder.typicode.com/users</code></a>:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/App.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { Admin, Resource } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+<span class="hljs-keyword">import</span> jsonServerProvider <span class="hljs-keyword">from</span> <span class="hljs-string">'ra-data-json-server'</span>;
+
+<span class="hljs-keyword">import</span> { PostList } <span class="hljs-keyword">from</span> <span class="hljs-string">'./posts'</span>;
+<span class="hljs-keyword">import</span> { UserList } <span class="hljs-keyword">from</span> <span class="hljs-string">'./users'</span>;
+
+<span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+    &lt;Admin dataProvider={jsonServerProvider('http://jsonplaceholder.typicode.com')}&gt;
+        &lt;Resource name="posts" list={PostList} /&gt;
+        &lt;Resource name="users" list={UserList} /&gt;
+    &lt;/Admin&gt;
+);
+</code></pre>
+<p><code>&lt;Resource&gt;</code> allows you to define a component for each CRUD operation, using the following prop names:</p>
+<ul>
+<li><code>list</code> (if defined, the resource is displayed on the Menu)</li>
+<li><code>create</code></li>
+<li><code>edit</code></li>
+<li><code>show</code></li>
+</ul>
+<p>Here is a more complete admin, with components for all the CRUD operations:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { Admin, Resource } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+<span class="hljs-keyword">import</span> jsonServerProvider <span class="hljs-keyword">from</span> <span class="hljs-string">'ra-data-json-server'</span>;
+
+<span class="hljs-keyword">import</span> { PostList, PostCreate, PostEdit, PostShow, PostIcon } <span class="hljs-keyword">from</span> <span class="hljs-string">'./posts'</span>;
+<span class="hljs-keyword">import</span> { UserList } <span class="hljs-keyword">from</span> <span class="hljs-string">'./posts'</span>;
+<span class="hljs-keyword">import</span> { CommentList, CommentEdit, CommentCreate, CommentIcon } <span class="hljs-keyword">from</span> <span class="hljs-string">'./comments'</span>;
+
+<span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+    &lt;Admin dataProvider={jsonServerProvider('http://jsonplaceholder.typicode.com')}&gt;
+        &lt;Resource name="posts" list={PostList} create={PostCreate} edit={PostEdit} show={PostShow} icon={PostIcon} /&gt;
+        &lt;Resource name="users" list={UserList} /&gt;
+        &lt;Resource name="comments" list={CommentList} create={CommentCreate} edit={CommentEdit} icon={CommentIcon} /&gt;
+        &lt;Resource name="tags" /&gt;
+    &lt;/Admin&gt;
+);
+</code></pre>
+<p><strong>Tip</strong>: Under the hood, the <code>&lt;Resource&gt;</code> component uses react-router to create several routes:</p>
+<ul>
+<li><code>/</code> maps to the <code>list</code> component</li>
+<li><code>/create</code> maps to the <code>create</code> component</li>
+<li><code>/:id</code> maps to the <code>edit</code> component</li>
+<li><code>/:id/show</code> maps to the <code>show</code> component</li>
+</ul>
+<p><strong>Tip</strong>: You must add a <code>&lt;Resource&gt;</code> when you declare a reference (via <code>&lt;ReferenceField&gt;</code>, <code>&lt;ReferenceArrayField&gt;</code>, <code>&lt;ReferenceManyField&gt;</code>, <code>&lt;ReferenceInput&gt;</code> or <code>&lt;ReferenceArrayInput&gt;</code>), because react-admin uses resources to define the data store structure. That's why there is an empty <code>tag</code> resource in the example above.</p>
+<p><code>&lt;Resource&gt;</code> also accepts additional props:</p>
+<ul>
+<li><a href="#name"><code>name</code></a></li>
+<li><a href="#icon"><code>icon</code></a></li>
+<li><a href="#icon"><code>options</code></a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="name"></a><a href="#name" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>name</code></h2>
+<p>React-admin uses the <code>name</code> prop both to determine the API endpoint (passed to the <code>dataProvider</code>), and to form the URL for the resource.</p>
+<pre><code class="hljs css language-jsx">&lt;Resource name=<span class="hljs-string">"posts"</span> list={PostList} create={PostCreate} edit={PostEdit} show={PostShow} /&gt;
+</code></pre>
+<p>For this resource react-admin will fetch the <code>http://jsonplaceholder.typicode.com/posts</code> endpoint for data.</p>
+<p>The routing will map the component as follows:</p>
+<ul>
+<li><code>/posts/</code> maps to <code>PostList</code></li>
+<li><code>/posts/create</code> maps to <code>PostCreate</code></li>
+<li><code>/posts/:id</code> maps to <code>PostEdit</code></li>
+<li><code>/posts/:id/show</code> maps to <code>PostShow</code></li>
+</ul>
+<p><strong>Tip</strong>: If you want to use a special API endpoint (e.g. '<a href="http://jsonplaceholder.typicode.com/my-custom-posts-endpoint'">http://jsonplaceholder.typicode.com/my-custom-posts-endpoint'</a>) without altering the URL in the react-admin application (so still use <code>/posts</code>), write the mapping from the resource <code>name</code> (<code>posts</code>) to the API endpoint (<code>my-custom-posts-endpoint</code>) in your own <a href="/ra-doc-usaurus/docs/admin#dataprovider"><code>dataProvider</code></a></p>
+<h2><a class="anchor" aria-hidden="true" id="icon"></a><a href="#icon" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>icon</code></h2>
+<p>React-admin will render the <code>icon</code> prop component in the menu:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/App.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> PostIcon <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/icons/Book'</span>;
+<span class="hljs-keyword">import</span> UserIcon <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/icons/People'</span>;
+<span class="hljs-keyword">import</span> { Admin, Resource } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+<span class="hljs-keyword">import</span> jsonServerProvider <span class="hljs-keyword">from</span> <span class="hljs-string">'ra-data-json-server'</span>;
+
+<span class="hljs-keyword">import</span> { PostList } <span class="hljs-keyword">from</span> <span class="hljs-string">'./posts'</span>;
+
+<span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+    &lt;Admin dataProvider={jsonServerProvider('http://jsonplaceholder.typicode.com')}&gt;
+        &lt;Resource name="posts" list={PostList} icon={PostIcon} /&gt;
+        &lt;Resource name="users" list={UserList} icon={UserIcon} /&gt;
+    &lt;/Admin&gt;
+);
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="options"></a><a href="#options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>options</h2>
+<p><code>options.label</code> allows to customize the display name of a given resource in the menu.</p>
+<p>{% raw %}</p>
+<pre><code class="hljs css language-jsx">&lt;Resource name=<span class="hljs-string">"v2/posts"</span> options={{ <span class="hljs-attr">label</span>: <span class="hljs-string">'Posts'</span> }} list={PostList} /&gt;
+</code></pre>
+<p>{% endraw %}</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/ra-doc-usaurus/docs/admin"><span class="arrow-prev">← </span><span>&lt;Admin&gt;</span></a><a class="docs-next button" href="/ra-doc-usaurus/docs/list"><span>&lt;List&gt; View</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#name"><code>name</code></a></li><li><a href="#icon"><code>icon</code></a></li><li><a href="#options">options</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/ra-doc-usaurus/" class="nav-home"><img src="/ra-doc-usaurus/img/logo.png" alt="React-Admin Documentation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/ra-doc-usaurus/docs/en/tutorial.html">Tutorials</a></div><div><h5>Community</h5><a href="http://stackoverflow.com/questions/tagged/react-admin" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/marmelab" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/marmelab/react-admin">GitHub</a><a class="github-button" href="https://github.com/marmelab/react-admin" data-icon="octicon-star" data-count-href="/marmelab/react-admin/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2019 Marmelab</section></footer></div><script src="http://localhost:undefined/livereload.js"></script></body></html>
