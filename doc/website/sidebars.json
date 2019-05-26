@@ -1,5 +1,27 @@
 {
   "docs": {
-    "Tutorials": ["doc1"]
+    "Table of contents": [
+      "readme",
+      "tutorial",
+      "dataprovider",
+      "admin",
+      "resource",
+      "list",
+      "show",
+      "fields",
+      "createandedit",
+      "inputs",
+      "authentication",
+      "authorization",
+      "actions",
+      "translation",
+      "customapp",
+      "reference",
+      "faq",
+      "ecosystem",
+      "unittesting",
+      "advancedtutorials",
+      "labs"
+    ]
   }
 }
