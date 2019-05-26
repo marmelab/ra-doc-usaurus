@@ -1,46 +1,8 @@
 ---
 id: readme
-title: React-Admin
-sidebar_label: Read Me
+title: Installation
+sidebar_label: Installation
 ---
-
-A frontend Framework for building admin applications running in the browser on top of REST/GraphQL APIs, using ES6, [React](https://facebook.github.io/react/) and [Material Design](https://material.io/). Previously named [admin-on-rest](https://github.com/marmelab/admin-on-rest). Open sourced and maintained by [marmelab](https://marmelab.com/).
-
-[Demo](https://marmelab.com/react-admin-demo/) -
-[Source](https://github.com/marmelab/react-admin) -
-[News](https://marmelab.com/en/blog/#react-admin) -
-[Releases](https://github.com/marmelab/react-admin/releases) -
-[Support](http://stackoverflow.com/questions/tagged/react-admin)
-
-<iframe src="https://player.vimeo.com/video/268958716?byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="display:block;margin:0 auto"></iframe>
-
-## Features
-
-* Adapts to any backend (REST, GraphQL, SOAP, etc.)
-* Complete documentation
-* Super-fast UI thanks to optimistic rendering (renders before the server returns)
-* Undo updates and deletes for a few seconds
-* Supports relationships (many to one, one to many)
-* Internationalization (i18n)
-* Conditional formatting
-* Themeable
-* Supports any authentication provider (REST API, OAuth, Basic Auth, ...)
-* Full-featured Datagrid (sort, pagination, filters)
-* Filter-as-you-type
-* Supports any form layout (simple, tabbed, etc.)
-* Data Validation
-* Custom actions
-* Large library of components for various data types: boolean, number, rich text, etc.
-* WYSIWYG editor
-* Customize dashboard, menu, layout
-* Super easy to extend and override (it's just React components)
-* Highly customizable interface
-* Can connect to multiple backends
-* Leverages the best libraries in the React ecosystem (Redux, redux-form, redux-saga, material-ui, recompose)
-* Can be included in another React app
-* Inspired by the popular [ng-admin](https://github.com/marmelab/ng-admin) library (also by marmelab)
-
-## Installation
 
 React-admin is available from npm. You can install it (and its required dependencies)
 using:

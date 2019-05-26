@@ -10,7 +10,7 @@
 
 
 const siteConfig = {
-  title: 'React-Admin Documentation', // Title for your website.
+  title: 'React-Admin', // Title for your website.
   tagline: 'A frontend Framework for building admin applications running in the browser on top of REST/GraphQL APIs, using ES6, React and Material Design.',
   url: 'https://marmelab.github.io',
   baseUrl: '/ra-doc-usaurus/',
@@ -21,8 +21,9 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    {doc: 'tutorial', label: 'Documentation'},
-    // {doc: 'doc4', label: 'API'},
+    {doc: 'readme', label: 'Documentation'},
+    {href: 'https://marmelab.com/fr/blog#react-admin', label: 'Blog'},
+    {href: 'https://github.com/marmelab/react-admin', label: 'Github'},
   ],
 
 

@@ -1207,7 +1207,7 @@ import { TextInput } from 'react-admin';
 
 ## Transforming Input Value to/from Record
 
-The data format returned by the input component may not be what your API desires. Since React-admin uses Redux Form, we can use its `parse()` and `format()` functions to transform the input value when saving to and loading from the record. It's better to understand the [input value's lifecycle](http://redux-form.com/6.5.0/docs/ValueLifecycle.md/) before you start.
+The data format returned by the input component may not be what your API desires. Since React-admin uses Redux Form, we can use its `parse()` and `format()` functions to transform the input value when saving to and loading from the record. It's better to understand the [input value's lifecycle](https://redux-form.com/6.5.0/docs/ValueLifecycle.md/) before you start.
 
 Mnemonic for the two functions:
 - `parse()`: input -> record
@@ -1254,7 +1254,7 @@ You can find components for react-admin in third-party repositories.
 
 ## Writing Your Own Input Component
 
-If you need a more specific input type, you can also write it yourself. You'll have to rely on redux-form's [`<Field>`](http://redux-form.com/6.5.0/docs/api/Field.md/) component, so as to handle the value update cycle.
+If you need a more specific input type, you can also write it yourself. You'll have to rely on redux-form's [`<Field>`](https://redux-form.com/6.5.0/docs/api/Field.md/) component, so as to handle the value update cycle.
 
 For instance, let's write a component to edit the latitude and longitude of the current record:
 
@@ -1330,7 +1330,7 @@ Now the component will render with a label:
 </span>
 ```
 
-Instead of HTML `input` elements, you can use a material-ui component. To compose material-ui and `Field`, use a [field renderer function](http://redux-form.com/6.5.0/examples/material-ui/) to map the props:
+Instead of HTML `input` elements, you can use a material-ui component. To compose material-ui and `Field`, use a [field renderer function](https://redux-form.com/6.5.0/examples/material-ui/) to map the props:
 
 ```jsx
 // in LatLongInput.js
@@ -1354,7 +1354,7 @@ const LatLngInput = () => (
 );
 ```
 
-Material-ui's `<TextField>` component already includes a label, so you don't need to use `<Labeled>` in this case. `<Field>` injects two props to its child component: `input` and `meta`. To learn more about these props, please refer to [the `<Field>` component documentation](http://redux-form.com/6.5.0/docs/api/Field.md/#props) in the redux-form website.
+Material-ui's `<TextField>` component already includes a label, so you don't need to use `<Labeled>` in this case. `<Field>` injects two props to its child component: `input` and `meta`. To learn more about these props, please refer to [the `<Field>` component documentation](https://redux-form.com/6.5.0/docs/api/Field.md/#props) in the redux-form website.
 
 **Tip**: If you only need one `<Field>` component in a custom input, you can let react-admin do the `<Field>` decoration for you by using the `addField` Higher-order component:
 
@@ -1406,7 +1406,7 @@ const MyDateInput = props => // ...
 export default addField(MyDateInput, { parse, format });
 ```
 
-For more details on how to use redux-form's `<Field>` component, please refer to [the redux-form doc](http://redux-form.com/6.5.0/docs/api/Field.md/).
+For more details on how to use redux-form's `<Field>` component, please refer to [the redux-form doc](https://redux-form.com/6.5.0/docs/api/Field.md/).
 
 Instead of HTML `input` elements or material-ui components, you can use react-admin input components, like `<NumberInput>` for instance. React-admin components are already decorated by `<Field>`, and already include a label, so you don't need either `<Field>` or `<Labeled>` when using them:
 

@@ -37,12 +37,17 @@ class Footer extends React.Component {
           </a>
           <div>
             <h5>Docs</h5>
-            <a href={this.docUrl('tutorial.html', this.props.language)}>
-              Tutorials
+            <a href={this.docUrl('readme.html', this.props.language)}>
+              Documentation
             </a>
           </div>
           <div>
             <h5>Community</h5>
+            <a
+              href="https://marmelab.com/fr/blog#react-admin"
+              target="_blank">
+              Blog
+            </a>
             <a
               href="http://stackoverflow.com/questions/tagged/react-admin"
               target="_blank"
