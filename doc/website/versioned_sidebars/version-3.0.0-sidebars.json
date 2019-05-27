@@ -1,0 +1,31 @@
+{
+  "version-3.0.0-docs": {
+    "Introduction": [
+      "version-3.0.0-readme",
+      "version-3.0.0-tutorial",
+      "version-3.0.0-dataprovider",
+      "version-3.0.0-authentication",
+      "version-3.0.0-authorization",
+      "version-3.0.0-actions",
+      "version-3.0.0-translation"
+    ],
+    "Components": [
+      "version-3.0.0-admin",
+      "version-3.0.0-resource",
+      "version-3.0.0-list",
+      "version-3.0.0-show",
+      "version-3.0.0-fields",
+      "version-3.0.0-createandedit",
+      "version-3.0.0-inputs",
+      "version-3.0.0-reference"
+    ],
+    "Misc": [
+      "version-3.0.0-customapp",
+      "version-3.0.0-faq",
+      "version-3.0.0-ecosystem",
+      "version-3.0.0-unittesting",
+      "version-3.0.0-advancedtutorials",
+      "version-3.0.0-labs"
+    ]
+  }
+}

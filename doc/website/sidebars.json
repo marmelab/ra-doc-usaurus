@@ -1,9 +1,15 @@
 {
   "docs": {
-    "Table of contents": [
+    "Introduction": [
       "readme",
       "tutorial",
       "dataprovider",
+      "authentication",
+      "authorization",
+      "actions",
+      "translation"
+    ],
+    "Components": [
       "admin",
       "resource",
       "list",
@@ -11,12 +17,10 @@
       "fields",
       "createandedit",
       "inputs",
-      "authentication",
-      "authorization",
-      "actions",
-      "translation",
+      "reference"
+    ],
+    "Misc": [
       "customapp",
-      "reference",
       "faq",
       "ecosystem",
       "unittesting",
