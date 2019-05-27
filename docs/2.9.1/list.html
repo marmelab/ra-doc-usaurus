@@ -1,0 +1,1130 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>The List View · React-Admin</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;The List view displays a list of records fetched from the API. The entry point for this view is the &lt;code&gt;&amp;lt;List&amp;gt;&lt;/code&gt; component, which takes care of fetching the data. Then, it passes the data to an iterator view - usually &lt;code&gt;&amp;lt;Datagrid&amp;gt;&lt;/code&gt;, which then delegates the rendering of each record property to &lt;a href=&quot;/ra-doc-usaurus/docs/2.9.1/fields&quot;&gt;&lt;code&gt;&amp;lt;Field&amp;gt;&lt;/code&gt;&lt;/a&gt; components.&lt;/p&gt;
+"/><meta name="docsearch:version" content="2.9.1"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="The List View · React-Admin"/><meta property="og:type" content="website"/><meta property="og:url" content="https://marmelab.github.io/ra-doc-usaurus/"/><meta property="og:description" content="&lt;p&gt;The List view displays a list of records fetched from the API. The entry point for this view is the &lt;code&gt;&amp;lt;List&amp;gt;&lt;/code&gt; component, which takes care of fetching the data. Then, it passes the data to an iterator view - usually &lt;code&gt;&amp;lt;Datagrid&amp;gt;&lt;/code&gt;, which then delegates the rendering of each record property to &lt;a href=&quot;/ra-doc-usaurus/docs/2.9.1/fields&quot;&gt;&lt;code&gt;&amp;lt;Field&amp;gt;&lt;/code&gt;&lt;/a&gt; components.&lt;/p&gt;
+"/><meta property="og:image" content="https://marmelab.github.io/ra-doc-usaurus/img/logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://marmelab.github.io/ra-doc-usaurus/img/logo.png"/><link rel="shortcut icon" href="/ra-doc-usaurus/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><link rel="stylesheet" href="/ra-doc-usaurus/css/main.css"/><script src="/ra-doc-usaurus/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ra-doc-usaurus/"><img class="logo" src="/ra-doc-usaurus/img/logo.png" alt="React-Admin"/><h2 class="headerTitleWithLogo">React-Admin</h2></a><a href="/ra-doc-usaurus/versions"><h3>2.9.1</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/ra-doc-usaurus/docs/2.9.1/readme" target="_self">Documentation</a></li><li class=""><a href="https://marmelab.com/fr/blog#react-admin" target="_self">Blog</a></li><li class=""><a href="https://github.com/marmelab/react-admin" target="_self">Github</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Table of contents</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Table of contents</h3><ul class=""><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/readme">Installation</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/tutorial">Tutorial</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/dataprovider">Data Providers</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/admin">&lt;Admin&gt;</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/resource">&lt;Resource&gt;</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/list">&lt;List&gt; View</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/show">&lt;Show&gt; View</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/fields">&lt;Field&gt; Components</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/createandedit">&lt;Create&gt; and &lt;Edit&gt; Views</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/inputs">&lt;Input&gt; Components</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/authentication">Authentication</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/authorization">Authorization</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/actions">Querying the API</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/translation">Translation</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/customapp">Including in Another App</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/reference">Reference</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/faq">FAQ</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/ecosystem">Ecosystem</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/unittesting">Unit Testing</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/advancedtutorials">Advanced Tutorials</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/labs">Labs</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">The List View</h1></header><article><div><span><p>The List view displays a list of records fetched from the API. The entry point for this view is the <code>&lt;List&gt;</code> component, which takes care of fetching the data. Then, it passes the data to an iterator view - usually <code>&lt;Datagrid&gt;</code>, which then delegates the rendering of each record property to <a href="/ra-doc-usaurus/docs/2.9.1/fields"><code>&lt;Field&gt;</code></a> components.</p>
+<p><img src="/ra-doc-usaurus/img/list-view.png" alt="The List View"></p>
+<h2><a class="anchor" aria-hidden="true" id="the-list-component"></a><a href="#the-list-component" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The <code>&lt;List&gt;</code> Component</h2>
+<p>The <code>&lt;List&gt;</code> component renders the list layout (title, buttons, filters, pagination), and fetches the list of records from the REST API. It then delegates the rendering of the list of records to its child component. Usually, it's a <code>&lt;Datagrid&gt;</code>, responsible for displaying a table with one row for each post.</p>
+<p><strong>Tip</strong>: In Redux terms, <code>&lt;List&gt;</code> is a connected component, and <code>&lt;Datagrid&gt;</code> is a dumb component.</p>
+<p>Here are all the props accepted by the <code>&lt;List&gt;</code> component:</p>
+<ul>
+<li><a href="#page-title"><code>title</code></a></li>
+<li><a href="#actions"><code>actions</code></a></li>
+<li><a href="#exporter"><code>exporter</code></a></li>
+<li><a href="#bulk-action-buttons"><code>bulkActionButtons</code></a></li>
+<li><a href="#filters"><code>filters</code></a> (a React element used to display the filter form)</li>
+<li><a href="#records-per-page"><code>perPage</code></a></li>
+<li><a href="#default-sort-field"><code>sort</code></a></li>
+<li><a href="#permanent-filter"><code>filter</code></a> (the permanent filter used in the REST request)</li>
+<li><a href="#filter-default-values"><code>filterDefaultValues</code></a> (the default values for <code>alwaysOn</code> filters)</li>
+<li><a href="#pagination"><code>pagination</code></a></li>
+<li><a href="#aside-component"><code>aside</code></a></li>
+</ul>
+<p>Here is the minimal code necessary to display a list of posts:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/App.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { Admin, Resource } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+<span class="hljs-keyword">import</span> jsonServerProvider <span class="hljs-keyword">from</span> <span class="hljs-string">'ra-data-json-server'</span>;
+
+<span class="hljs-keyword">import</span> { PostList } <span class="hljs-keyword">from</span> <span class="hljs-string">'./posts'</span>;
+
+<span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+    &lt;Admin dataProvider={jsonServerProvider('http://jsonplaceholder.typicode.com')}&gt;
+        &lt;Resource name="posts" list={PostList} /&gt;
+    &lt;/Admin&gt;
+);
+
+export default App;
+
+// in src/posts.js
+import React from 'react';
+import { List, Datagrid, TextField } from 'react-admin';
+
+export const PostList = (props) =&gt; (
+    &lt;List {...props}&gt;
+        &lt;Datagrid&gt;
+            &lt;TextField source="id" /&gt;
+            &lt;TextField source="title" /&gt;
+            &lt;TextField source="body" /&gt;
+        &lt;/Datagrid&gt;
+    &lt;/List&gt;
+);
+</code></pre>
+<p>That's enough to display the post list:</p>
+<p><img src="/ra-doc-usaurus/img/simple-post-list.png" alt="Simple posts list"></p>
+<h3><a class="anchor" aria-hidden="true" id="page-title"></a><a href="#page-title" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Page Title</h3>
+<p>The default title for a list view is &quot;[resource] list&quot; (e.g. &quot;Posts list&quot;). Use the <code>title</code> prop to customize the List view title:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/posts.js</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> PostList = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">List</span> {<span class="hljs-attr">...props</span>} <span class="hljs-attr">title</span>=<span class="hljs-string">"List of posts"</span>&gt;</span>
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">List</span>&gt;</span></span>
+);
+</code></pre>
+<p>The title can be either a string, or an element of your own.</p>
+<h3><a class="anchor" aria-hidden="true" id="actions"></a><a href="#actions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Actions</h3>
+<p>You can replace the list of default actions by your own element using the <code>actions</code> prop:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">import</span> Button <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/core/Button'</span>;
+<span class="hljs-keyword">import</span> { CreateButton, ExportButton, RefreshButton } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+<span class="hljs-keyword">import</span> Toolbar <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/core/Toolbar'</span>;
+
+<span class="hljs-keyword">const</span> PostActions = ({
+    basePath,
+    currentSort,
+    displayedFilters,
+    exporter,
+    filters,
+    filterValues,
+    onUnselectItems,
+    resource,
+    selectedIds,
+    showFilter,
+    total
+}) =&gt; (
+    &lt;Toolbar&gt;
+        {filters &amp;&amp; React.cloneElement(filters, {
+            resource,
+            showFilter,
+            displayedFilters,
+            filterValues,
+            context: 'button',
+        }) }
+        &lt;CreateButton basePath={basePath} /&gt;
+        &lt;ExportButton
+            disabled={total === 0}
+            resource={resource}
+            sort={currentSort}
+            filter={filterValues}
+            exporter={exporter}
+        /&gt;
+        {/* Add your custom actions */}
+        &lt;Button color="primary" onClick={customAction}&gt;Custom Action&lt;/Button&gt;
+    &lt;/Toolbar&gt;
+);
+
+export const PostList = (props) =&gt; (
+    &lt;List {...props} actions={&lt;PostActions /&gt;}&gt;
+        ...
+    &lt;/List&gt;
+);
+</code></pre>
+<p>You can also use such a custom <code>ListActions</code> prop to omit or reorder buttons based on permissions. Just pass the <code>permissions</code> down from the <code>List</code> component:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> PostList = <span class="hljs-function">(<span class="hljs-params">{ permissions, ...props }</span>) =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">List</span> {<span class="hljs-attr">...props</span>} <span class="hljs-attr">actions</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">PostActions</span> <span class="hljs-attr">permissions</span>=<span class="hljs-string">{permissions}</span> /&gt;</span>}&gt;
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">List</span>&gt;</span>
+);
+</span></code></pre>
+<h3><a class="anchor" aria-hidden="true" id="exporter"></a><a href="#exporter" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Exporter</h3>
+<p>Among the default list actions, react-admin includes an <code>&lt;ExportButton&gt;</code>. This button is disabled when there is no record in the current <code>&lt;List&gt;</code>.</p>
+<p>By default, clicking this button will:</p>
+<ol>
+<li>Call the <code>dataProvider</code> with the current sort and filter (but without pagination),</li>
+<li>Transform the result into a CSV string,</li>
+<li>Download the CSV file.</li>
+</ol>
+<p>The columns of the CSV file match all the fields of the records in the <code>dataProvider</code> response. That means that the export doesn't take into account the selection and ordering of fields in your <code>&lt;List&gt;</code> via <code>Field</code> components. If you want to customize the result, pass a custom <code>exporter</code> function to the <code>&lt;List&gt;</code>. This function will receive the data from the <code>dataProvider</code> (after step 1), and replace steps 2-3 (i.e. it's in charge of transforming, converting, and downloading the file).</p>
+<p><strong>Tip</strong>: For CSV conversion, you can import <a href="https://www.papaparse.com/">Papaparse</a>, a CSV parser and stringifier which is already a react-admin dependency. And for CSV download, take advantage of react-admin's <code>downloadCSV</code> function.</p>
+<p><strong>Tip</strong>: You may also remove the <code>&lt;ExportButton&gt;</code> by passing <code>false</code> to the <code>exporter</code> prop: <code>exporter={false}</code></p>
+<p>Here is an example for a Posts exporter, omitting, adding, and reordering fields:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in PostList.js</span>
+<span class="hljs-keyword">import</span> { List, downloadCSV } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+<span class="hljs-keyword">import</span> { unparse <span class="hljs-keyword">as</span> convertToCSV } <span class="hljs-keyword">from</span> <span class="hljs-string">'papaparse/papaparse.min'</span>;
+
+<span class="hljs-keyword">const</span> exporter = <span class="hljs-function"><span class="hljs-params">posts</span> =&gt;</span> {
+    <span class="hljs-keyword">const</span> postsForExport = posts.map(<span class="hljs-function"><span class="hljs-params">post</span> =&gt;</span> {
+        <span class="hljs-keyword">const</span> { postForExport, backlinks, author } = post; <span class="hljs-comment">// omit backlinks and author</span>
+        postForExport.author_name = post.author.name; <span class="hljs-comment">// add a field</span>
+        <span class="hljs-keyword">return</span> postForExport;
+    });
+    <span class="hljs-keyword">const</span> csv = convertToCSV({
+        <span class="hljs-attr">data</span>: postsForExport,
+        <span class="hljs-attr">fields</span>: [<span class="hljs-string">'id'</span>, <span class="hljs-string">'title'</span>, <span class="hljs-string">'author_name'</span>, <span class="hljs-string">'body'</span>] <span class="hljs-comment">// order fields in the export</span>
+    });
+    downloadCSV(csv, <span class="hljs-string">'posts'</span>); <span class="hljs-comment">// download as 'posts.csv` file</span>
+})
+
+<span class="hljs-keyword">const</span> PostList = <span class="hljs-function"><span class="hljs-params">props</span> =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">List</span> {<span class="hljs-attr">...props</span>} <span class="hljs-attr">exporter</span>=<span class="hljs-string">{exporter}</span>&gt;</span>
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">List</span>&gt;</span></span>
+)
+</code></pre>
+<p>In many cases, you'll need more than simple object manipulation. You'll need to <em>augment</em> your objects based on relationships. For instance, the export for comments should include the title of the related post - but the export only exposes a <code>post_id</code> by default. For that purpose, the exporter receives a <code>fetchRelatedRecords</code> function as second parameter. It fetches related records using your <code>dataProvider</code> and Redux, and returns a promise.</p>
+<p>Here is an example for a Comments exporter, fetching related Posts:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in CommentList.js</span>
+<span class="hljs-keyword">import</span> { List, downloadCSV } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+<span class="hljs-keyword">import</span> { unparse <span class="hljs-keyword">as</span> convertToCSV } <span class="hljs-keyword">from</span> <span class="hljs-string">'papaparse/papaparse.min'</span>;
+
+<span class="hljs-keyword">const</span> exporter = <span class="hljs-function">(<span class="hljs-params">records, fetchRelatedRecords</span>) =&gt;</span> {
+    fetchRelatedRecords(records, <span class="hljs-string">'post_id'</span>, <span class="hljs-string">'posts'</span>).then(<span class="hljs-function"><span class="hljs-params">posts</span> =&gt;</span> {
+        <span class="hljs-keyword">const</span> data = records.map(<span class="hljs-function"><span class="hljs-params">record</span> =&gt;</span> ({
+                ...record,
+                <span class="hljs-attr">post_title</span>: posts[record.post_id].title,
+        }));
+        <span class="hljs-keyword">const</span> csv = convertToCSV({
+            data,
+            <span class="hljs-attr">fields</span>: [<span class="hljs-string">'id'</span>, <span class="hljs-string">'post_id'</span>, <span class="hljs-string">'post_title'</span>, <span class="hljs-string">'body'</span>],
+        });
+        downloadCSV(csv, <span class="hljs-string">'comments'</span>);
+    });
+};
+
+<span class="hljs-keyword">const</span> CommentList = <span class="hljs-function"><span class="hljs-params">props</span> =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">List</span> {<span class="hljs-attr">...props</span>} <span class="hljs-attr">exporter</span>=<span class="hljs-string">{exporter}</span>&gt;</span>
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">List</span>&gt;</span></span>
+)
+</code></pre>
+<p>Under the hood, <code>fetchRelatedRecords()</code> uses react-admin's sagas, which trigger the loading spinner while loading. As a bonus, all the records fetched during an export are kepts in the main Redux store, so further browsing the admin will be accelerated.</p>
+<p><strong>Tip</strong>: If you need to call another <code>dataProvider</code> verb in the exporter, take advantage of the third parameter passed to the function: <code>dispatch()</code>. It allows you to call any Redux action. Combine it with <a href="/ra-doc-usaurus/docs/2.9.1/actions#custom-sagas">the <code>callback</code> side effect</a> to grab the result in a callback.</p>
+<p><strong>Tip</strong>: The <code>&lt;ExportButton&gt;</code> limits the main request to the <code>dataProvider</code> to 1,000 records. If you want to increase or decrease this limit, pass a <code>maxResults</code> prop to the <code>&lt;ExportButton&gt;</code> in a custom <code>&lt;ListActions&gt;</code> component, as explained in the previous section.</p>
+<p><strong>Tip</strong>: For complex (or large) exports, fetching all the related records and assembling them client-side can be slow. In that case, create the CSV on the server side, and replace the <code>&lt;ExportButton&gt;</code> component by a custom one, fetching the CSV route.</p>
+<h3><a class="anchor" aria-hidden="true" id="bulk-action-buttons"></a><a href="#bulk-action-buttons" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bulk Action Buttons</h3>
+<p>Bulk action buttons are buttons that affect several records at once, like mass deletion for instance. In the <code>&lt;Datagrid&gt;</code> component, the bulk actions toolbar appears when a user ticks the checkboxes in the first column of the table. The user can then choose a button from the bulk actions toolbar. By default, all list views have a single bulk action button, the bulk delete button. You can add other bulk action buttons by passing a custom element as the <code>bulkActionButtons</code> prop of the <code>&lt;List&gt;</code> component:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">import</span> React, { Fragment } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> Button <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/core/Button'</span>;
+<span class="hljs-keyword">import</span> { BulkDeleteButton } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+<span class="hljs-keyword">import</span> ResetViewsButton <span class="hljs-keyword">from</span> <span class="hljs-string">'./ResetViewsButton'</span>;
+
+<span class="hljs-keyword">const</span> PostBulkActionButtons = <span class="hljs-function"><span class="hljs-params">props</span> =&gt;</span> (
+    &lt;Fragment&gt;
+        &lt;ResetViewsButton label="Reset Views" {...props} /&gt;
+        {/* Add the default bulk delete action */}
+        &lt;BulkDeleteButton {...props} /&gt;
+    &lt;/Fragment&gt;
+);
+
+export const PostList = (props) =&gt; (
+    &lt;List {...props} bulkActionButtons={&lt;PostBulkActionButtons /&gt;}&gt;
+        ...
+    &lt;/List&gt;
+);
+</code></pre>
+<p><img src="/ra-doc-usaurus/img/bulk-actions-toolbar.gif" alt="Bulk Action Buttons"></p>
+<p><strong>Tip</strong>: You can also disable bulk actions altogether by passing <code>false</code> to the <code>bulkActionButtons</code> prop. When using a <code>Datagrid</code> inside a <code>List</code> with disabled bulk actions, the checkboxes column won't be added.</p>
+<p>Bulk action button components receive several props allowing them to perform their job:</p>
+<ul>
+<li><code>resource</code>: the currently displayed resource (eg <code>posts</code>, <code>comments</code>, etc.)</li>
+<li><code>basePath</code>: the current router base path for the resource (eg <code>/posts</code>, <code>/comments</code>, etc.)</li>
+<li><code>filterValues</code>: the filter values. This can be useful if you want to apply your action on all items matching the filter.</li>
+<li><code>selectedIds</code>: the identifiers of the currently selected items.</li>
+</ul>
+<p>Here is an example leveraging the <code>UPDATE_MANY</code> crud action, which will set the <code>views</code> property of all posts to <code>0</code>:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in ./ResetViewsButton.js</span>
+<span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+<span class="hljs-keyword">import</span> { Button, crudUpdateMany } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ResetViewsButton</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+    handleClick = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">const</span> { basePath, crudUpdateMany, resource, selectedIds } = <span class="hljs-keyword">this</span>.props;
+        crudUpdateMany(resource, selectedIds, { <span class="hljs-attr">views</span>: <span class="hljs-number">0</span> }, basePath);
+    };
+
+    render() {
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"Reset Views"</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.handleClick}</span> /&gt;</span>
+        );
+    }
+}
+
+export default connect(undefined, { crudUpdateMany })(ResetViewsButton);
+</span></code></pre>
+<p>But most of the time, bulk actions are mini-applications with a standalone user interface (in a Dialog). Here is the same <code>ResetViewsAction</code> implemented behind a confirmation dialog:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in ./ResetViewsButton.js</span>
+<span class="hljs-keyword">import</span> React, { Fragment, Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+<span class="hljs-keyword">import</span> { Button, Confirm, crudUpdateMany } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ResetViewsButton</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+    state = {
+        <span class="hljs-attr">isOpen</span>: <span class="hljs-literal">false</span>,
+    }
+
+    handleClick = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">this</span>.setState({ <span class="hljs-attr">isOpen</span>: <span class="hljs-literal">true</span> });
+    }
+
+    handleDialogClose = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">this</span>.setState({ <span class="hljs-attr">isOpen</span>: <span class="hljs-literal">false</span> });
+    };
+
+    handleConfirm = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">const</span> { basePath, crudUpdateMany, resource, selectedIds } = <span class="hljs-keyword">this</span>.props;
+        crudUpdateMany(resource, selectedIds, { <span class="hljs-attr">views</span>: <span class="hljs-number">0</span> }, basePath);
+        <span class="hljs-keyword">this</span>.setState({ <span class="hljs-attr">isOpen</span>: <span class="hljs-literal">true</span> });
+    };
+
+    render() {
+        <span class="hljs-keyword">return</span> (
+            &lt;Fragment&gt;
+                &lt;Button label="Reset Views" onClick={this.handleClick} /&gt;
+                &lt;Confirm
+                    isOpen={this.state.isOpen}
+                    title="Update View Count"
+                    content="Are you sure you want to reset the views for these items?"
+                    onConfirm={this.handleConfirm}
+                    onClose={this.handleDialogClose}
+                /&gt;
+            &lt;/Fragment&gt;
+        );
+    }
+}
+
+export default connect(undefined, { crudUpdateMany })(ResetViewsButton);
+</code></pre>
+<p><strong>Tip</strong>: <code>&lt;Confirm&gt;</code> leverages material-ui's <code>&lt;Dialog&gt;</code> component to implement a confirmation popup. Feel free to use it in your admins!</p>
+<p><strong>Tip</strong>: <code>&lt;Confirm&gt;</code> text props such as <code>title</code> and <code>content</code> are translatable. You can pass them translation keys.</p>
+<p><strong>Tip</strong>: You can customize the text of the two <code>&lt;Confirm&gt;</code> component buttons using the <code>cancel</code> and <code>confirm</code> prop which accepts translation keys too.</p>
+<p><strong>Tip</strong>: React-admin doesn't use the <code>&lt;Confirm&gt;</code> component internally, because deletes and updates are applied locally immediately, then dispatched to the server after a few seconds, unless the user chooses to undo the modification. That's what we call optimistic rendering. You can do the same for the <code>ResetViewsButton</code> by wrapping the <code>crudUpdateMany()</code> action creator inside a <code>startUndoable()</code> action creator, as follows:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in ./ResetViewsButton.js</span>
+<span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+<span class="hljs-keyword">import</span> { Button, crudUpdateMany, startUndoable } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ResetViewsButton</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+    handleClick = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">const</span> {  basePath, resource, selectedIds, startUndoable } = <span class="hljs-keyword">this</span>.props;
+        startUndoable(
+            crudUpdateMany(resource, selectedIds, { <span class="hljs-attr">views</span>: <span class="hljs-number">0</span> }, basePath)
+        );
+    };
+
+    render() {
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"Reset Views"</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.handleClick}</span> /&gt;</span>
+        );
+    }
+}
+
+export default connect(undefined, { startUndoable })(ResetViewsButton);
+</span></code></pre>
+<p>Note that the <code>crudUpdateMany</code> action creator is <em>not</em> present in the <code>mapDispatchToProps</code> argument of <code>connect()</code> in that case. Only <code>startUndoable</code> needs to be dispatched in this case, using the result of the <code>crudUpdateMany()</code> call as parameter.</p>
+<h3><a class="anchor" aria-hidden="true" id="filters"></a><a href="#filters" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Filters</h3>
+<p>You can add a filter element to the list using the <code>filters</code> prop:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">const</span> PostFilter = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+    &lt;Filter {...props}&gt;
+        &lt;TextInput label="Search" source="q" alwaysOn /&gt;
+        &lt;TextInput label="Title" source="title" defaultValue="Hello, World!" /&gt;
+    &lt;/Filter&gt;
+);
+
+export const PostList = (props) =&gt; (
+    &lt;List {...props} filters={&lt;PostFilter /&gt;}&gt;
+        ...
+    &lt;/List&gt;
+);
+</code></pre>
+<p>The filter component must be a <code>&lt;Filter&gt;</code> with <code>&lt;Input&gt;</code> children.</p>
+<p><strong>Tip</strong>: <code>&lt;Filter&gt;</code> is a special component, which renders in two ways:</p>
+<ul>
+<li>as a filter button (to add new filters)</li>
+<li>as a filter form (to enter filter values)</li>
+</ul>
+<p>It does so by inspecting its <code>context</code> prop.</p>
+<p><strong>Tip</strong>: Don't mix up this <code>filters</code> prop, expecting a React element, with the <code>filter</code> props, which expects an object to define permanent filters (see below).</p>
+<p>The <code>Filter</code> component accepts the usual <code>className</code> prop but you can override many class names injected to the inner components by React-admin thanks to the <code>classes</code> property (as most Material UI components, see their <a href="https://material-ui.com/customization/overrides/#overriding-with-classes">documentation about it</a>). This property accepts the following keys:</p>
+<ul>
+<li><code>form</code>: applied to the root element when rendering as a form.</li>
+<li><code>button</code>: applied to the root element when rendering as a button.</li>
+</ul>
+<p>Children of the <code>&lt;Filter&gt;</code> form are regular inputs. <code>&lt;Filter&gt;</code> hides them all by default, except those that have the <code>alwaysOn</code> prop.</p>
+<p><strong>Tip</strong>: For technical reasons, react-admin does not accept children of <code>&lt;Filter&gt;</code> having both a <code>defaultValue</code> and <code>alwaysOn</code>. To set default values for always on filters, use the <code>filterDefaultValues</code> prop of the <code>&lt;List&gt;</code> component instead (see below).</p>
+<h3><a class="anchor" aria-hidden="true" id="records-per-page"></a><a href="#records-per-page" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Records Per Page</h3>
+<p>By default, the list paginates results by groups of 10. You can override this setting by specifying the <code>perPage</code> prop:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/posts.js</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> PostList = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">List</span> {<span class="hljs-attr">...props</span>} <span class="hljs-attr">perPage</span>=<span class="hljs-string">{25}</span>&gt;</span>
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">List</span>&gt;</span></span>
+);
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="default-sort-field"></a><a href="#default-sort-field" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Default Sort Field</h3>
+<p>Pass an object literal as the <code>sort</code> prop to determine the default <code>field</code> and <code>order</code> used for sorting:</p>
+<p>{% raw %}</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/posts.js</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> PostList = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">List</span> {<span class="hljs-attr">...props</span>} <span class="hljs-attr">sort</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">field:</span> '<span class="hljs-attr">published_at</span>', <span class="hljs-attr">order:</span> '<span class="hljs-attr">DESC</span>' }}&gt;</span>
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">List</span>&gt;</span></span>
+);
+</code></pre>
+<p>{% endraw %}</p>
+<p><code>sort</code> defines the <em>default</em> sort order ; the list remains sortable by clicking on column headers.</p>
+<h3><a class="anchor" aria-hidden="true" id="disabling-sorting"></a><a href="#disabling-sorting" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Disabling Sorting</h3>
+<p>It is possible to disable sorting for a specific field by passing a <code>sortable</code> property set to <code>false</code>:</p>
+<p>{% raw %}</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/posts.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { List, Datagrid, TextField } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> PostList = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+    &lt;List {...props}&gt;
+        &lt;Datagrid&gt;
+            &lt;TextField source="id" sortable={false} /&gt;
+            &lt;TextField source="title" /&gt;
+            &lt;TextField source="body" /&gt;
+        &lt;/Datagrid&gt;
+    &lt;/List&gt;
+);
+</code></pre>
+<p>{% endraw %}</p>
+<h3><a class="anchor" aria-hidden="true" id="specify-sort-field"></a><a href="#specify-sort-field" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Specify Sort Field</h3>
+<p>By default, a column is sorted by the <code>source</code> property. To define another attribute to sort by, set it via the <code>sortBy</code> property:</p>
+<p>{% raw %}</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/posts.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { List, Datagrid, TextField } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> PostList = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+    &lt;List {...props}&gt;
+        &lt;Datagrid&gt;
+            &lt;ReferenceField label="Post" source="id" reference="posts" sortBy="title"&gt;
+                &lt;TextField source="title" /&gt;
+            &lt;/ReferenceField&gt;
+            &lt;FunctionField
+                label="Author"
+                sortBy="last_name"
+                render={record =&gt; `${record.author.first_name} ${record.author.last_name}`}
+            /&gt;
+            &lt;TextField source="body" /&gt;
+        &lt;/Datagrid&gt;
+    &lt;/List&gt;
+);
+</code></pre>
+<p>{% endraw %}</p>
+<h3><a class="anchor" aria-hidden="true" id="permanent-filter"></a><a href="#permanent-filter" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Permanent Filter</h3>
+<p>You can choose to always filter the list, without letting the user disable this filter - for instance to display only published posts. Write the filter to be passed to the REST client in the <code>filter</code> props:</p>
+<p>{% raw %}</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/posts.js</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> PostList = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">List</span> {<span class="hljs-attr">...props</span>} <span class="hljs-attr">filter</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">is_published:</span> <span class="hljs-attr">true</span> }}&gt;</span>
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">List</span>&gt;</span></span>
+);
+</code></pre>
+<p>{% endraw %}</p>
+<p>The actual filter parameter sent to the REST client is the result of the combination of the <em>user</em> filters (the ones set through the <code>filters</code> component form), and the <em>permanent</em> filter. The user cannot override the permanent filters set by way of <code>filter</code>.</p>
+<h3><a class="anchor" aria-hidden="true" id="filter-default-values"></a><a href="#filter-default-values" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Filter Default Values</h3>
+<p>To set default values to filters, you can either pass an object literal as the <code>filterDefaultValues</code> prop of the <code>&lt;List&gt;</code> element, or use the <code>defaultValue</code> prop of any input component.</p>
+<p>There is one exception: inputs with <code>alwaysOn</code> don't accept <code>defaultValue</code>. You have to use the <code>filterDefaultValues</code> for those.</p>
+<p>{% raw %}</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/posts.js</span>
+<span class="hljs-keyword">const</span> PostFilter = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+    &lt;Filter {...props}&gt;
+        &lt;TextInput label="Search" source="q" alwaysOn /&gt;
+        &lt;BooleanInput source="is_published" alwaysOn /&gt;
+        &lt;TextInput source="title" defaultValue="Hello, World!" /&gt;
+    &lt;/Filter&gt;
+);
+
+export const PostList = (props) =&gt; (
+    &lt;List {...props} filters={&lt;PostFilter /&gt;} filterDefaultValues={{ is_published: true }}&gt;
+        ...
+    &lt;/List&gt;
+);
+</code></pre>
+<p>{% endraw %}</p>
+<p><strong>Tip</strong>: The <code>filter</code> and <code>filterDefaultValues</code> props have one key difference: the <code>filterDefaultValues</code> can be overridden by the user, while the <code>filter</code> values are always sent to the data provider. Or, to put it otherwise:</p>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">const</span> filterSentToDataProvider = { ...filterDefaultValues, ...filterChosenByUser, ...filters };
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="pagination"></a><a href="#pagination" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Pagination</h3>
+<p>You can replace the default pagination element by your own, using the <code>pagination</code> prop. The pagination element receives the current page, the number of records per page, the total number of records, as well as a <code>setPage()</code> function that changes the page.</p>
+<p>For instance, you can modify the default pagination by adjusting the &quot;rows per page&quot; selector.</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/MyPagination.js</span>
+<span class="hljs-keyword">import</span> { Pagination } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-keyword">const</span> PostPagination = <span class="hljs-function"><span class="hljs-params">props</span> =&gt;</span> &lt;Pagination rowsPerPageOptions={[<span class="hljs-number">10</span>, <span class="hljs-number">25</span>, <span class="hljs-number">50</span>, <span class="hljs-number">100</span>]} {...props} /&gt;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> PostList = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">List</span> {<span class="hljs-attr">...props</span>} <span class="hljs-attr">pagination</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">PostPagination</span> /&gt;</span>}&gt;
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">List</span>&gt;</span></span>
+);
+</code></pre>
+<p><strong>Tip</strong>: Pass an empty array to <code>rowsPerPageOptions</code> to disable the rows per page selection.</p>
+<p>Alternately, if you want to replace the default pagination by a &quot;&lt;previous - next&gt;&quot; pagination, create a pagination component like the following:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">import</span> Button <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/core/Button'</span>;
+<span class="hljs-keyword">import</span> ChevronLeft <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/icons/ChevronLeft'</span>;
+<span class="hljs-keyword">import</span> ChevronRight <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/icons/ChevronRight'</span>;
+<span class="hljs-keyword">import</span> Toolbar <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/core/Toolbar'</span>;
+
+<span class="hljs-keyword">const</span> PostPagination = <span class="hljs-function">(<span class="hljs-params">{ page, perPage, total, setPage }</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> nbPages = <span class="hljs-built_in">Math</span>.ceil(total / perPage) || <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">return</span> (
+        nbPages &gt; <span class="hljs-number">1</span> &amp;&amp;
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Toolbar</span>&gt;</span>
+                {page &gt; 1 &amp;&amp;
+                    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">color</span>=<span class="hljs-string">"primary"</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"prev"</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">ChevronLeft</span> /&gt;</span>} onClick={() =&gt; setPage(page - 1)}&gt;
+                        Prev
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+                }
+                {page !== nbPages &amp;&amp;
+                    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">color</span>=<span class="hljs-string">"primary"</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"next"</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">ChevronRight</span> /&gt;</span>} onClick={() =&gt; setPage(page + 1)} labelPosition="before"&gt;
+                        Next
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+                }
+            <span class="hljs-tag">&lt;/<span class="hljs-name">Toolbar</span>&gt;</span></span>
+    );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> PostList = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">List</span> {<span class="hljs-attr">...props</span>} <span class="hljs-attr">pagination</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">PostPagination</span> /&gt;</span>}&gt;
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">List</span>&gt;</span></span>
+);
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="aside-component"></a><a href="#aside-component" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Aside component</h3>
+<p>You may want to display additional information on the side of the list. Use the <code>aside</code> prop for that, passing the component of your choice:</p>
+<p>{% raw %}</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">const</span> Aside = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">width:</span> <span class="hljs-attr">200</span>, <span class="hljs-attr">margin:</span> '<span class="hljs-attr">1em</span>' }}&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Typography</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">"h6"</span>&gt;</span>Post details<span class="hljs-tag">&lt;/<span class="hljs-name">Typography</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Typography</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">"body2"</span>&gt;</span>
+            Posts will only be published one an editor approves them
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Typography</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+);
+
+<span class="hljs-keyword">const</span> PostList = <span class="hljs-function"><span class="hljs-params">props</span> =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">List</span> <span class="hljs-attr">aside</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">Aside</span> /&gt;</span>} {...props}&gt;
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">List</span>&gt;</span></span>
+</code></pre>
+<p>{% endraw %}</p>
+<p>The <code>aside</code> component receives the same props as the <code>List</code> child component, including the following:</p>
+<ul>
+<li><code>basePath</code>,</li>
+<li><code>currentSort</code>,</li>
+<li><code>data</code>,</li>
+<li><code>defaultTitle</code>,</li>
+<li><code>filterValues</code>,</li>
+<li><code>ids</code>,</li>
+<li><code>page</code>,</li>
+<li><code>perPage</code>,</li>
+<li><code>resource</code>,</li>
+<li><code>selectedIds</code>,</li>
+<li><code>total</code>,</li>
+<li><code>version</code>,</li>
+</ul>
+<p>That means you can display additional details of the current list in the aside component:</p>
+<p>{% raw %}</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">const</span> Aside = <span class="hljs-function">(<span class="hljs-params">{ data, ids }</span>) =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">width:</span> <span class="hljs-attr">200</span>, <span class="hljs-attr">margin:</span> '<span class="hljs-attr">1em</span>' }}&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Typography</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">"h6"</span>&gt;</span>Posts stats<span class="hljs-tag">&lt;/<span class="hljs-name">Typography</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Typography</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">"body2"</span>&gt;</span>
+            Total views: {ids.map(id =&gt; data[id]).reduce((sum, post) =&gt; sum + post.views)}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Typography</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+);
+</code></pre>
+<p>{% endraw %}</p>
+<h3><a class="anchor" aria-hidden="true" id="css-api"></a><a href="#css-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CSS API</h3>
+<p>The <code>List</code> component accepts the usual <code>className</code> prop but you can override many class names injected to the inner components by React-admin thanks to the <code>classes</code> property (as most Material UI components, see their <a href="https://material-ui.com/customization/overrides/#overriding-with-classes">documentation about it</a>). This property accepts the following keys:</p>
+<ul>
+<li><code>root</code>: alternative to using <code>className</code>. Applied to the root element.</li>
+<li><code>header</code>: applied to the page header</li>
+<li><code>actions</code>: applied to the actions container</li>
+<li><code>noResults</code>: applied to the component shown when there is no result</li>
+</ul>
+<p>Here is an example of how you can override some of these classes:</p>
+<p>You can customize the list styles by passing a <code>classes</code> object as prop, through <code>withStyles()</code>. Here is an example:</p>
+<p>{% raw %}</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">const</span> styles = {
+    <span class="hljs-attr">header</span>: {
+        <span class="hljs-attr">backgroundColor</span>: <span class="hljs-string">'#ccc'</span>,
+    },
+};
+
+<span class="hljs-keyword">const</span> PostList = <span class="hljs-function">(<span class="hljs-params">{ classes, ...props }</span>) =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">List</span> {<span class="hljs-attr">...props</span>} <span class="hljs-attr">classes</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">header:</span> <span class="hljs-attr">classes.header</span> }}&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Datagrid</span>&gt;</span>
+            ...
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Datagrid</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">List</span>&gt;</span></span>
+);
+
+<span class="hljs-keyword">export</span> withStyles(styles)(PostList);
+</code></pre>
+<p>{% endraw %}</p>
+<h2><a class="anchor" aria-hidden="true" id="the-listguesser-component"></a><a href="#the-listguesser-component" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The <code>&lt;ListGuesser&gt;</code> component</h2>
+<p>Instead of a custom <code>List</code>, you can use the <code>ListGuesser</code> to determine which fields to use based on the data returned by the API.</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/App.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { Admin, Resource, ListGuesser } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+<span class="hljs-keyword">import</span> jsonServerProvider <span class="hljs-keyword">from</span> <span class="hljs-string">'ra-data-json-server'</span>;
+
+<span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Admin</span> <span class="hljs-attr">dataProvider</span>=<span class="hljs-string">{jsonServerProvider(</span>'<span class="hljs-attr">http:</span>//<span class="hljs-attr">jsonplaceholder.typicode.com</span>')}&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Resource</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"posts"</span> <span class="hljs-attr">list</span>=<span class="hljs-string">{ListGuesser}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Admin</span>&gt;</span>
+);
+</span></code></pre>
+<p>Just like <code>List</code>, <code>ListGuesser</code> fetches the data. It then analyzes the response, and guesses the fields it should use to display a basic datagrid with the data. It also dumps the components it has guessed in the console, where you can copy it into your own code. Use this feature to quickly bootstrap a <code>List</code> on top of an existing API, without adding the fields one by one.</p>
+<p><img src="/ra-doc-usaurus/img/guessed-list.png" alt="Guessed List"></p>
+<p>React-admin provides guessers for the <code>List</code> view (<code>ListGuesser</code>), the <code>Edit</code> view (<code>EditGuesser</code>), and the <code>Show</code> view (<code>ShowGuesser</code>).</p>
+<p><strong>Tip</strong>: Do not use the guessers in production. They are slower than manually-defined components, because they have to infer types based on the content. Besides, the guesses are not always perfect.</p>
+<h2><a class="anchor" aria-hidden="true" id="the-datagrid-component"></a><a href="#the-datagrid-component" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The <code>&lt;Datagrid&gt;</code> component</h2>
+<p>The datagrid component renders a list of records as a table. It is usually used as a child of the <a href="#the-list-component"><code>&lt;List&gt;</code></a> and <a href="/ra-doc-usaurus/docs/2.9.1/fields#referencemanyfield"><code>&lt;ReferenceManyField&gt;</code></a> components.</p>
+<p>Here are all the props accepted by the component:</p>
+<ul>
+<li><a href="#body-element"><code>body</code></a></li>
+<li><a href="#row-style-function"><code>rowStyle</code></a></li>
+<li><a href="#rowclick"><code>rowClick</code></a></li>
+<li><a href="#expand"><code>expand</code></a></li>
+</ul>
+<p>It renders as many columns as it receives <code>&lt;Field&gt;</code> children.</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/posts.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { List, Datagrid, TextField, EditButton } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> PostList = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+    &lt;List {...props}&gt;
+        &lt;Datagrid&gt;
+            &lt;TextField source="id" /&gt;
+            &lt;TextField source="title" /&gt;
+            &lt;TextField source="body" /&gt;
+            &lt;EditButton /&gt;
+        &lt;/Datagrid&gt;
+    &lt;/List&gt;
+);
+</code></pre>
+<p>The datagrid is an <em>iterator</em> component: it receives an array of ids, and a data store, and is supposed to iterate over the ids to display each record. Another example of iterator component is <a href="#the-singlefieldlist-component"><code>&lt;SingleFieldList&gt;</code></a>.</p>
+<h3><a class="anchor" aria-hidden="true" id="body-element"></a><a href="#body-element" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Body element</h3>
+<p>By default, <code>&lt;Datagrid&gt;</code> renders its body using <code>&lt;DatagridBody&gt;</code>, an internal react-admin component. You can pass a custom component as the <code>row</code> prop to override that default. And by the way, <code>&lt;DatagridBody&gt;</code> has a <code>row</code> property set to <code>&lt;DatagridRow&gt;</code> by default for the same purpose. <code>&lt;DatagridRow&gt;</code> receives the row <code>record</code>, the <code>resource</code>, and a copy of the datagrid children. That means you can create a custom datagrid logic without copying several components from the react-admin source.</p>
+<p>For instance, to show the selection checkbox only for records that have a <code>selectable</code> field set to true, you can override <code>&lt;DatagridRow&gt;</code> and <code>&lt;DatagridBody&gt;</code> as follows:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/PostList.js</span>
+<span class="hljs-keyword">import</span> { Datagrid, DatagridBody, List, TextField } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+<span class="hljs-keyword">import</span> TableCell <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/core/TableCell'</span>;
+<span class="hljs-keyword">import</span> TableRow <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/core/TableRow'</span>;
+<span class="hljs-keyword">import</span> Checkbox <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/core/Checkbox'</span>;
+
+<span class="hljs-keyword">const</span> MyDatagridRow = <span class="hljs-function">(<span class="hljs-params">{ record, resource, id, onToggleItem, children, selected, basePath }</span>) =&gt;</span> (
+    &lt;TableRow key={id}&gt;
+        {/* first column: selection checkbox */}
+        &lt;TableCell padding="none"&gt;
+            {record.selectable &amp;&amp; &lt;Checkbox
+                checked={selected}
+                onClick={() =&gt; onToggleItem(id)}
+            /&gt;}
+        &lt;/TableCell&gt;
+        {/* data columns based on children */}
+        {React.Children.map(children, field =&gt; (
+            &lt;TableCell key={`${id}-${field.props.source}`}&gt;
+                {React.cloneElement(field, {
+                    record,
+                    basePath,
+                    resource,
+                })}
+            &lt;/TableCell&gt;
+        ))}
+    &lt;/TableRow&gt;
+)
+
+const MyDatagridBody = props =&gt; &lt;DatagridBody {...props} row={&lt;MyDatagridRow /&gt;} /&gt;;
+const MyDatagrid = props =&gt; &lt;Datagrid {...props} body={&lt;MyDatagridBody /&gt;} /&gt;;
+
+const PostList = props =&gt; (
+    &lt;List {...props}&gt;
+        &lt;MyDatagrid&gt;
+            &lt;Textfield source="title" /&gt;
+            ...
+        &lt;/MyDatagrid&gt;
+    &lt;/List&gt;
+)
+
+export default PostList;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="row-style-function"></a><a href="#row-style-function" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Row Style Function</h3>
+<p>You can customize the datagrid row style (applied to the <code>&lt;tr&gt;</code> element) based on the record, thanks to the <code>rowStyle</code> prop, which expects a function.</p>
+<p>For instance, this allows to apply a custom background to the entire row if one value of the record - like its number of views - passes a certain threshold.</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">const</span> postRowStyle = <span class="hljs-function">(<span class="hljs-params">record, index</span>) =&gt;</span> ({
+    <span class="hljs-attr">backgroundColor</span>: record.nb_views &gt;= <span class="hljs-number">500</span> ? <span class="hljs-string">'#efe'</span> : <span class="hljs-string">'white'</span>,
+});
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> PostList = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">List</span> {<span class="hljs-attr">...props</span>}&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Datagrid</span> <span class="hljs-attr">rowStyle</span>=<span class="hljs-string">{postRowStyle}</span>&gt;</span>
+            ...
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Datagrid</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">List</span>&gt;</span></span>
+);
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="rowclick"></a><a href="#rowclick" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>rowClick</code></h3>
+<p>You can catch clicks on rows to redirect to the show or edit view by setting the <code>rowClick</code> prop:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> PostList = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">List</span> {<span class="hljs-attr">...props</span>}&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Datagrid</span> <span class="hljs-attr">rowClick</span>=<span class="hljs-string">"edit"</span>&gt;</span>
+            ...
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Datagrid</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">List</span>&gt;</span></span>
+);
+</code></pre>
+<p><code>rowClick</code> accepts the following values:</p>
+<ul>
+<li>&quot;edit&quot; to redirect to the edition vue</li>
+<li>&quot;show&quot; to redirect to the show vue</li>
+<li>&quot;expand&quot; to open the <code>expand</code> panel</li>
+<li>a function <code>(id, basePath, record) =&gt; path</code> to redirect to a custom path</li>
+</ul>
+<p><strong>Tip</strong>: If you pass a function, it can return <code>edit</code>, <code>show</code> or a router path. This allows to redirect to either <code>edit</code> or <code>show</code> after checking a condition on the record. For example:</p>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">const</span> postRowClick = <span class="hljs-function">(<span class="hljs-params">id, basePath, record</span>) =&gt;</span> record.editable ? <span class="hljs-string">'edit'</span> : <span class="hljs-string">'show'</span>;
+</code></pre>
+<p><strong>Tip</strong>: If you pass a function, it can also return a promise allowing you to check an external API before returning a path. For example:</p>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">import</span> fetchUserRights <span class="hljs-keyword">from</span> <span class="hljs-string">'./fetchUserRights'</span>;
+
+<span class="hljs-keyword">const</span> postRowClick = <span class="hljs-function">(<span class="hljs-params">id, basePath, record</span>) =&gt;</span> fetchUserRights().then(({ canEdit }) canEdit ? <span class="hljs-string">'edit'</span> : <span class="hljs-string">'show'</span>);
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="expand"></a><a href="#expand" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>expand</code></h3>
+<p>To show more data from the resource without adding too many columns, you can show data in an expandable panel below the row on demand, using the <code>expand</code> prop. For instance, this code shows the <code>body</code> of a post in an expandable panel:</p>
+<p>{% raw %}</p>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">const</span> PostPanel = <span class="hljs-function">(<span class="hljs-params">{ id, record, resource }</span>) =&gt;</span> (
+    &lt;div dangerouslySetInnerHTML={{ __html: record.body }} /&gt;
+);
+
+const PostList = props =&gt; (
+    &lt;List {...props}&gt;
+        &lt;Datagrid expand={&lt;PostPanel /&gt;}&gt;
+            &lt;TextField source="id" /&gt;
+            &lt;TextField source="title" /&gt;
+            &lt;DateField source="published_at" /&gt;
+            &lt;BooleanField source="commentable" /&gt;
+            &lt;EditButton /&gt;
+        &lt;/Datagrid&gt;
+    &lt;/List&gt;
+)
+</code></pre>
+<p>{% endraw %}</p>
+<p><img src="/ra-doc-usaurus/img/datagrid_expand.gif" alt="expandable panel"></p>
+<p>The <code>expand</code> prop expects an element as value. When the user chooses to expand the row, the Datagrid clones the element, and passes the current <code>record</code>, <code>id</code>, and <code>resource</code>.</p>
+<p><strong>Tip</strong>: Since the <code>expand</code> element receives the same props as a detail view, you can actually use a <code>&lt;Show&gt;</code> view as element for the <code>expand</code> prop:</p>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">const</span> PostShow = <span class="hljs-function"><span class="hljs-params">props</span> =&gt;</span> (
+    &lt;Show
+        {...props}
+        /* disable the app title change when shown */
+        title=" "
+    &gt;
+        &lt;SimpleShowLayout&gt;
+            &lt;RichTextField source="body" /&gt;
+        &lt;/SimpleShowLayout&gt;
+    &lt;/Show&gt;
+);
+
+const PostList = props =&gt; (
+    &lt;List {...props}&gt;
+        &lt;Datagrid expand={&lt;PostShow /&gt;}&gt;
+            &lt;TextField source="id" /&gt;
+            &lt;TextField source="title" /&gt;
+            &lt;DateField source="published_at" /&gt;
+            &lt;BooleanField source="commentable" /&gt;
+            &lt;EditButton /&gt;
+        &lt;/Datagrid&gt;
+    &lt;/List&gt;
+)
+</code></pre>
+<p>The result will be the same as in the previous snippet, except that <code>&lt;Show&gt;</code> encloses the content inside a material-ui <code>&lt;Card&gt;</code>.</p>
+<p><strong>Tip</strong>: You can go one step further and use an <code>&lt;Edit&gt;</code> view as <code>expand</code> element, albeit with a twist:</p>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">const</span> PostEdit = <span class="hljs-function"><span class="hljs-params">props</span> =&gt;</span> (
+    &lt;Edit 
+        {...props}
+        /* disable the app title change when shown */
+        title=" "
+    &gt;
+        &lt;SimpleForm
+            /* The form must have a name dependent on the record, because by default all forms have the same name */
+            form={`post_edit_${props.id}`}
+        &gt;
+            &lt;RichTextInput source="body" /&gt;
+        &lt;/SimpleForm&gt;
+    &lt;/Edit&gt;
+);
+
+const PostList = props =&gt; (
+    &lt;List {...props}&gt;
+        &lt;Datagrid expand={&lt;PostEdit /&gt;}&gt;
+            &lt;TextField source="id" /&gt;
+            &lt;TextField source="title" /&gt;
+            &lt;DateField source="published_at" /&gt;
+            &lt;BooleanField source="commentable" /&gt;
+            &lt;EditButton /&gt;
+        &lt;/Datagrid&gt;
+    &lt;/List&gt;
+)
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="css-api-1"></a><a href="#css-api-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CSS API</h3>
+<p>The <code>Datagrid</code> component accepts the usual <code>className</code> prop but you can override many class names injected to the inner components by React-admin thanks to the <code>classes</code> property (as most Material UI components, see their <a href="https://material-ui.com/customization/overrides/#overriding-with-classes">documentation about it</a>). This property accepts the following keys:</p>
+<ul>
+<li><code>table</code>: alternative to using <code>className</code>. Applied to the root element.</li>
+<li><code>tbody</code>: applied to the tbody</li>
+<li><code>headerCell</code>: applied to each header cell</li>
+<li><code>row</code>: applied to each row</li>
+<li><code>rowEven</code>: applied to each even row</li>
+<li><code>rowOdd</code>: applied to each odd row</li>
+<li><code>rowCell</code>: applied to each row cell</li>
+</ul>
+<p>Here is an example of how you can override some of these classes:</p>
+<p>You can customize the datagrid styles by passing a <code>classes</code> object as prop, through <code>withStyles()</code>. Here is an example:</p>
+<p>{% raw %}</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">const</span> styles = {
+    <span class="hljs-attr">row</span>: {
+        <span class="hljs-attr">backgroundColor</span>: <span class="hljs-string">'#ccc'</span>,
+    },
+};
+
+<span class="hljs-keyword">const</span> PostList = <span class="hljs-function">(<span class="hljs-params">{ classes, ...props</span>) =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">List</span> {<span class="hljs-attr">...props</span>}&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Datagrid</span> <span class="hljs-attr">classes</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">row:</span> <span class="hljs-attr">classes.row</span> }}&gt;</span>
+            ...
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Datagrid</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">List</span>&gt;</span></span>
+);
+
+<span class="hljs-keyword">export</span> withStyles(styles)(PostList);
+</code></pre>
+<p>{% endraw %}</p>
+<p><strong>Tip</strong>: If you want to override the <code>header</code> and <code>cell</code> styles independently for each column, use the <code>headerClassName</code> and <code>cellClassName</code> props in <code>&lt;Field&gt;</code> components. For instance, to hide a certain column on small screens:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">import</span> { withStyles } <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/core/styles'</span>;
+
+<span class="hljs-keyword">const</span> styles = <span class="hljs-function"><span class="hljs-params">theme</span> =&gt;</span> ({
+    <span class="hljs-attr">hiddenOnSmallScreens</span>: {
+        [theme.breakpoints.down(<span class="hljs-string">'md'</span>)]: {
+            <span class="hljs-attr">display</span>: <span class="hljs-string">'none'</span>,
+        },
+    },
+});
+
+<span class="hljs-keyword">const</span> PostList = <span class="hljs-function">(<span class="hljs-params">{ classes, ...props }</span>) =&gt;</span> (
+    &lt;List {...props}&gt;
+        &lt;Datagrid&gt;
+            &lt;TextField source="id" /&gt;
+            &lt;TextField source="title" /&gt;
+            &lt;TextField
+                source="views"
+                headerClassName={classes.hiddenOnSmallScreens}
+                cellClassName={classes.hiddenOnSmallScreens}
+            /&gt;
+        &lt;/Datagrid&gt;
+    &lt;/List&gt;
+);
+
+export default withStyles(styles)(PostList);
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="the-simplelist-component"></a><a href="#the-simplelist-component" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The <code>&lt;SimpleList&gt;</code> component</h2>
+<p>For mobile devices, a <code>&lt;Datagrid&gt;</code> is often unusable - there is simply not enough space to display several columns. The convention in that case is to use a simple list, with only one column per row. The <code>&lt;SimpleList&gt;</code> component serves that purpose, leveraging <a href="https://v1-5-0.material-ui.com/demos/lists/">material-ui's <code>&lt;List&gt;</code> and <code>&lt;ListItem&gt;</code> components</a>. You can use it as <code>&lt;List&gt;</code> or <code>&lt;ReferenceManyField&gt;</code> child:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/posts.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { List, SimpleList } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> PostList = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">List</span> {<span class="hljs-attr">...props</span>}&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">SimpleList</span>
+            <span class="hljs-attr">primaryText</span>=<span class="hljs-string">{record</span> =&gt;</span> record.title}
+            secondaryText={record =&gt; `${record.views} views`}
+            tertiaryText={record =&gt; new Date(record.published_at).toLocaleDateString()}
+        /&gt;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">List</span>&gt;</span>
+);
+</span></code></pre>
+<p><code>&lt;SimpleList&gt;</code> iterates over the list data. For each record, it executes the <code>primaryText</code>, <code>secondaryText</code>, <code>leftAvatar</code>, <code>leftIcon</code>, <code>rightAvatar</code>, and <code>rightIcon</code> props function, and passes the result as the corresponding <code>&lt;ListItem&gt;</code> prop.</p>
+<p><strong>Tip</strong>: To use a <code>&lt;SimpleList&gt;</code> on small screens and a <code>&lt;Datagrid&gt;</code> on larger screens, use the <code>&lt;Responsive&gt;</code> component:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/posts.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { List, Responsive, SimpleList, Datagrid, TextField, ReferenceField, EditButton } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> PostList = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+    &lt;List {...props}&gt;
+        &lt;Responsive
+            small={
+                &lt;SimpleList
+                    primaryText={record =&gt; record.title}
+                    secondaryText={record =&gt; `${record.views} views`}
+                    tertiaryText={record =&gt; new Date(record.published_at).toLocaleDateString()}
+                /&gt;
+            }
+            medium={
+                &lt;Datagrid&gt;
+                    ...
+                &lt;/Datagrid&gt;
+            }
+        /&gt;
+    &lt;/List&gt;
+);
+</code></pre>
+<p><strong>Tip</strong>: The <code>&lt;SimpleList&gt;</code> items link to the edition page by default. You can set the <code>linkType</code> prop to <code>show</code> to link to the <code>&lt;Show&gt;</code> page instead.</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/posts.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { List, SimpleList } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> PostList = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">List</span> {<span class="hljs-attr">...props</span>}&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">SimpleList</span>
+            <span class="hljs-attr">primaryText</span>=<span class="hljs-string">{record</span> =&gt;</span> record.title}
+            secondaryText={record =&gt; `${record.views} views`}
+            tertiaryText={record =&gt; new Date(record.published_at).toLocaleDateString()}
+            linkType="show"
+        /&gt;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">List</span>&gt;</span>
+);
+</span></code></pre>
+<p>Setting the <code>linkType</code> prop to <code>false</code> (boolean, not string) removes the link in all list items.</p>
+<h2><a class="anchor" aria-hidden="true" id="the-singlefieldlist-component"></a><a href="#the-singlefieldlist-component" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The <code>&lt;SingleFieldList&gt;</code> component</h2>
+<p>When you want to display only one property of a list of records, instead of using a <code>&lt;Datagrid&gt;</code>, use the <code>&lt;SingleFieldList&gt;</code>. It expects a single <code>&lt;Field&gt;</code> as child. It's especially useful for <code>&lt;ReferenceManyField&gt;</code> or <code>&lt;ReferenceArrayField&gt;</code> components:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// Display all the tags for the current post</span>
+&lt;ReferenceArrayField
+    label=<span class="hljs-string">"Tags"</span>
+    reference=<span class="hljs-string">"tags"</span>
+    source=<span class="hljs-string">"tags"</span>
+&gt;
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">SingleFieldList</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ChipField</span> <span class="hljs-attr">source</span>=<span class="hljs-string">"name"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">SingleFieldList</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ReferenceArrayField</span>&gt;</span></span>
+</code></pre>
+<p><img src="/ra-doc-usaurus/img/reference-many-field-single-field-list.png" alt="ReferenceManyFieldSingleFieldList"></p>
+<p><strong>Tip</strong>: The <code>&lt;SingleFieldList&gt;</code> items link to the edition page by default. You can set the <code>linkType</code> prop to <code>show</code> to link to the <code>&lt;Show&gt;</code> page instead.</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// Display all the tags for the current post</span>
+&lt;ReferenceArrayField
+    label=<span class="hljs-string">"Tags"</span>
+    reference=<span class="hljs-string">"tags"</span>
+    source=<span class="hljs-string">"tags"</span>
+&gt;
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">SingleFieldList</span> <span class="hljs-attr">linkType</span>=<span class="hljs-string">"show"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ChipField</span> <span class="hljs-attr">source</span>=<span class="hljs-string">"name"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">SingleFieldList</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ReferenceArrayField</span>&gt;</span></span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="the-tree-component"></a><a href="#the-tree-component" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The <code>&lt;Tree&gt;</code> component</h2>
+<p>When you want to display a hierarchized list of records, instead of using a <code>&lt;Datagrid&gt;</code>, use the <code>&lt;Tree&gt;</code> component. This component is available in an addon package: <a href="https://github.com/marmelab/react-admin/blob/master/packages/ra-tree-ui-materialui/README.md"><code>ra-tree-ui-materialui</code></a>.</p>
+<p><em>Important</em>: This package is part of our <a href="/ra-doc-usaurus/docs/2.9.1/labs">Labs</a> experimentations. This means it misses some features and might not handle all corner cases. Use it at your own risks. Besides, we would really appreciate some feedback!</p>
+<p>It expects that every resource returned from the <code>List</code> has a <code>parent_id</code> property by default:</p>
+<pre><code class="hljs css language-json">[
+    { <span class="hljs-attr">"id"</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Clothing"</span> },
+    { <span class="hljs-attr">"id"</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Men"</span>, <span class="hljs-attr">"parent_id"</span>: <span class="hljs-number">1</span> },
+    { <span class="hljs-attr">"id"</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Suits"</span>, <span class="hljs-attr">"parent_id"</span>: <span class="hljs-number">2</span> },
+    { <span class="hljs-attr">"id"</span>: <span class="hljs-number">6</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Women"</span>, <span class="hljs-attr">"parent_id"</span>: <span class="hljs-number">1</span> },
+    { <span class="hljs-attr">"id"</span>: <span class="hljs-number">7</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Dresses"</span>, <span class="hljs-attr">"parent_id"</span>: <span class="hljs-number">6</span> },
+    { <span class="hljs-attr">"id"</span>: <span class="hljs-number">10</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Skirts"</span>, <span class="hljs-attr">"parent_id"</span>: <span class="hljs-number">6</span> },
+    { <span class="hljs-attr">"id"</span>: <span class="hljs-number">11</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Blouses"</span>, <span class="hljs-attr">"parent_id"</span>: <span class="hljs-number">6</span> }
+]
+</code></pre>
+<p>Here's an example showing how to use it:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/categories.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { List, TextField, EditButton, DeleteButton } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+<span class="hljs-keyword">import</span> { Tree, NodeView, NodeActions } <span class="hljs-keyword">from</span> <span class="hljs-string">'ra-tree-ui-materialui'</span>;
+
+<span class="hljs-keyword">const</span> CategoriesActions = <span class="hljs-function"><span class="hljs-params">props</span> =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">NodeActions</span> {<span class="hljs-attr">...props</span>}&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">EditButton</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">DeleteButton</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">NodeActions</span>&gt;</span></span>
+);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> CategoriesList = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">List</span> {<span class="hljs-attr">...props</span>} <span class="hljs-attr">perPage</span>=<span class="hljs-string">{10000}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Tree</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">NodeView</span> <span class="hljs-attr">actions</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">CategoriesActions</span> /&gt;</span>}&gt;
+                <span class="hljs-tag">&lt;<span class="hljs-name">TextField</span> <span class="hljs-attr">source</span>=<span class="hljs-string">"name"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">NodeView</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Tree</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">List</span>&gt;</span>
+);
+</span></code></pre>
+<p><img src="/ra-doc-usaurus/img/ra-tree.gif" alt="ra-tree demo"></p>
+<p><strong>Tip</strong>: The <code>&lt;Tree&gt;</code> component supports drag &amp; drop operations:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> CategoriesList = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">List</span> {<span class="hljs-attr">...props</span>} <span class="hljs-attr">perPage</span>=<span class="hljs-string">{10000}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Tree</span> <span class="hljs-attr">enableDragAndDrop</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">NodeView</span> <span class="hljs-attr">actions</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">CategoriesActions</span> /&gt;</span>}&gt;
+                <span class="hljs-tag">&lt;<span class="hljs-name">TextField</span> <span class="hljs-attr">source</span>=<span class="hljs-string">"name"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">NodeView</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Tree</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">List</span>&gt;</span>
+);
+</span></code></pre>
+<p>To learn more about this component features, please refers to its <a href="https://github.com/marmelab/react-admin/blob/master/packages/ra-tree-ui-materialui/README.md">README</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="using-a-custom-iterator"></a><a href="#using-a-custom-iterator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using a Custom Iterator</h2>
+<p>A <code>&lt;List&gt;</code> can delegate to any iterator component - <code>&lt;Datagrid&gt;</code> is just one example. An iterator component must accept at least two props:</p>
+<ul>
+<li><code>ids</code> is an array of the ids currently displayed in the list</li>
+<li><code>data</code> is an object of all the fetched data for this resource, indexed by id.</li>
+</ul>
+<p>For instance, what if you prefer to show a list of cards rather than a datagrid?</p>
+<p><img src="/ra-doc-usaurus/img/custom-iterator.png" alt="Custom iterator"></p>
+<p>You'll need to create your own iterator component as follows:</p>
+<p>{% raw %}</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/comments.js</span>
+<span class="hljs-keyword">import</span> Card <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/core/Card'</span>;
+<span class="hljs-keyword">import</span> CardActions <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/core/CardActions'</span>;
+<span class="hljs-keyword">import</span> CardContent <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/core/CardContent'</span>;
+<span class="hljs-keyword">import</span> CardHeader <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/core/CardHeader'</span>;
+
+<span class="hljs-keyword">const</span> cardStyle = {
+    <span class="hljs-attr">width</span>: <span class="hljs-number">300</span>,
+    <span class="hljs-attr">minHeight</span>: <span class="hljs-number">300</span>,
+    <span class="hljs-attr">margin</span>: <span class="hljs-string">'0.5em'</span>,
+    <span class="hljs-attr">display</span>: <span class="hljs-string">'inline-block'</span>,
+    <span class="hljs-attr">verticalAlign</span>: <span class="hljs-string">'top'</span>
+};
+<span class="hljs-keyword">const</span> CommentGrid = <span class="hljs-function">(<span class="hljs-params">{ ids, data, basePath }</span>) =&gt;</span> (
+    &lt;div style={{ margin: '1em' }}&gt;
+    {ids.map(id =&gt;
+        &lt;Card key={id} style={cardStyle}&gt;
+            &lt;CardHeader
+                title={&lt;TextField record={data[id]} source="author.name" /&gt;}
+                subheader={&lt;DateField record={data[id]} source="created_at" /&gt;}
+                avatar={&lt;Avatar icon={&lt;PersonIcon /&gt;} /&gt;}
+            /&gt;
+            &lt;CardContent&gt;
+                &lt;TextField record={data[id]} source="body" /&gt;
+            &lt;/CardContent&gt;
+            &lt;CardContent&gt;
+                about&amp;nbsp;
+                &lt;ReferenceField label="Post" resource="comments" record={data[id]} source="post_id" reference="posts" basePath={basePath}&gt;
+                    &lt;TextField source="title" /&gt;
+                &lt;/ReferenceField&gt;
+            &lt;/CardContent&gt;
+            &lt;CardActions style={{ textAlign: 'right' }}&gt;
+                &lt;EditButton resource="posts" basePath={basePath} record={data[id]} /&gt;
+            &lt;/CardActions&gt;
+        &lt;/Card&gt;
+    )}
+    &lt;/div&gt;
+);
+CommentGrid.defaultProps = {
+    data: {},
+    ids: [],
+};
+
+export const CommentList = (props) =&gt; (
+    &lt;List title="All comments" {...props}&gt;
+        &lt;CommentGrid /&gt;
+    &lt;/List&gt;
+);
+</code></pre>
+<p>{% endraw %}</p>
+<p>As you can see, nothing prevents you from using <code>&lt;Field&gt;</code> components inside your own components... provided you inject the current <code>record</code>. Also, notice that components building links require the <code>basePath</code> component, which is also injected.</p>
+<h2><a class="anchor" aria-hidden="true" id="displaying-fields-depending-on-the-user-permissions"></a><a href="#displaying-fields-depending-on-the-user-permissions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Displaying Fields depending on the user permissions</h2>
+<p>You might want to display some fields or filters only to users with specific permissions. Those permissions are retrieved for each route and will provided to your component as a <code>permissions</code> prop.</p>
+<p>Each route will call the <code>authProvider</code> with the <code>AUTH_GET_PERMISSIONS</code> type and some parameters including the current location and route parameters. It's up to you to return whatever you need to check inside your component such as the user's role, etc.</p>
+<p>{% raw %}</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">const</span> UserFilter = <span class="hljs-function">(<span class="hljs-params">{ permissions, ...props }</span>) =&gt;</span>
+    &lt;Filter {...props}&gt;
+        &lt;TextInput
+            label="user.list.search"
+            source="q"
+            alwaysOn
+        /&gt;
+        &lt;TextInput source="name" /&gt;
+        {permissions === 'admin' ? &lt;TextInput source="role" /&gt; : null}
+    &lt;/Filter&gt;;
+
+export const UserList = ({ permissions, ...props }) =&gt;
+    &lt;List
+        {...props}
+        filters={&lt;UserFilter permissions={permissions} /&gt;}
+        sort={{ field: 'name', order: 'ASC' }}
+    &gt;
+        &lt;Responsive
+            small={
+                &lt;SimpleList
+                    primaryText={record =&gt; record.name}
+                    secondaryText={record =&gt;
+                        permissions === 'admin' ? record.role : null}
+                /&gt;
+            }
+            medium={
+                &lt;Datagrid&gt;
+                    &lt;TextField source="id" /&gt;
+                    &lt;TextField source="name" /&gt;
+                    {permissions === 'admin' &amp;&amp; &lt;TextField source="role" /&gt;}
+                    {permissions === 'admin' &amp;&amp; &lt;EditButton /&gt;}
+                    &lt;ShowButton /&gt;
+                &lt;/Datagrid&gt;
+            }
+        /&gt;
+    &lt;/List&gt;;
+</code></pre>
+<p>{% endraw %}</p>
+<p><strong>Tip</strong> Note how the <code>permissions</code> prop is passed down to the custom <code>filters</code> component.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/ra-doc-usaurus/docs/2.9.1/resource"><span class="arrow-prev">← </span><span>&lt;Resource&gt;</span></a><a class="docs-next button" href="/ra-doc-usaurus/docs/2.9.1/show"><span>&lt;Show&gt; View</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#the-list-component">The <code>&lt;List&gt;</code> Component</a><ul class="toc-headings"><li><a href="#page-title">Page Title</a></li><li><a href="#actions">Actions</a></li><li><a href="#exporter">Exporter</a></li><li><a href="#bulk-action-buttons">Bulk Action Buttons</a></li><li><a href="#filters">Filters</a></li><li><a href="#records-per-page">Records Per Page</a></li><li><a href="#default-sort-field">Default Sort Field</a></li><li><a href="#disabling-sorting">Disabling Sorting</a></li><li><a href="#specify-sort-field">Specify Sort Field</a></li><li><a href="#permanent-filter">Permanent Filter</a></li><li><a href="#filter-default-values">Filter Default Values</a></li><li><a href="#pagination">Pagination</a></li><li><a href="#aside-component">Aside component</a></li><li><a href="#css-api">CSS API</a></li></ul></li><li><a href="#the-listguesser-component">The <code>&lt;ListGuesser&gt;</code> component</a></li><li><a href="#the-datagrid-component">The <code>&lt;Datagrid&gt;</code> component</a><ul class="toc-headings"><li><a href="#body-element">Body element</a></li><li><a href="#row-style-function">Row Style Function</a></li><li><a href="#rowclick"><code>rowClick</code></a></li><li><a href="#expand"><code>expand</code></a></li><li><a href="#css-api-1">CSS API</a></li></ul></li><li><a href="#the-simplelist-component">The <code>&lt;SimpleList&gt;</code> component</a></li><li><a href="#the-singlefieldlist-component">The <code>&lt;SingleFieldList&gt;</code> component</a></li><li><a href="#the-tree-component">The <code>&lt;Tree&gt;</code> component</a></li><li><a href="#using-a-custom-iterator">Using a Custom Iterator</a></li><li><a href="#displaying-fields-depending-on-the-user-permissions">Displaying Fields depending on the user permissions</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/ra-doc-usaurus/" class="nav-home"><img src="/ra-doc-usaurus/img/logo.png" alt="React-Admin" width="66" height="58"/></a><div><h5>Docs</h5><a href="/ra-doc-usaurus/docs/en/readme.html">Documentation</a></div><div><h5>Community</h5><a href="https://marmelab.com/fr/blog#react-admin" target="_blank">Blog</a><a href="http://stackoverflow.com/questions/tagged/react-admin" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/marmelab" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/marmelab/react-admin">GitHub</a><a class="github-button" href="https://github.com/marmelab/react-admin" data-icon="octicon-star" data-count-href="/marmelab/react-admin/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2019 Marmelab</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '6778b641ebaffb925970cff06524e0c0',
+                indexName: 'react-admin',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {}
+              });
+            </script><script src="http://localhost:undefined/livereload.js"></script></body></html>

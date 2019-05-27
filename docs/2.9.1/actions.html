@@ -1,0 +1,763 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Querying the API · React-Admin</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;Admin interfaces often have to query the API beyond CRUD requests. For instance, a user profile page may need to get the User object based on a user id. Or, users may want to an &amp;quot;Approve&amp;quot; a comment by pressing a button, and this action should update the &lt;code&gt;is_approved&lt;/code&gt; property and save the updated record in one click.&lt;/p&gt;
+"/><meta name="docsearch:version" content="2.9.1"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Querying the API · React-Admin"/><meta property="og:type" content="website"/><meta property="og:url" content="https://marmelab.github.io/ra-doc-usaurus/"/><meta property="og:description" content="&lt;p&gt;Admin interfaces often have to query the API beyond CRUD requests. For instance, a user profile page may need to get the User object based on a user id. Or, users may want to an &amp;quot;Approve&amp;quot; a comment by pressing a button, and this action should update the &lt;code&gt;is_approved&lt;/code&gt; property and save the updated record in one click.&lt;/p&gt;
+"/><meta property="og:image" content="https://marmelab.github.io/ra-doc-usaurus/img/logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://marmelab.github.io/ra-doc-usaurus/img/logo.png"/><link rel="shortcut icon" href="/ra-doc-usaurus/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><link rel="stylesheet" href="/ra-doc-usaurus/css/main.css"/><script src="/ra-doc-usaurus/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ra-doc-usaurus/"><img class="logo" src="/ra-doc-usaurus/img/logo.png" alt="React-Admin"/><h2 class="headerTitleWithLogo">React-Admin</h2></a><a href="/ra-doc-usaurus/versions"><h3>2.9.1</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/ra-doc-usaurus/docs/2.9.1/readme" target="_self">Documentation</a></li><li class=""><a href="https://marmelab.com/fr/blog#react-admin" target="_self">Blog</a></li><li class=""><a href="https://github.com/marmelab/react-admin" target="_self">Github</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Table of contents</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Table of contents</h3><ul class=""><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/readme">Installation</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/tutorial">Tutorial</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/dataprovider">Data Providers</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/admin">&lt;Admin&gt;</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/resource">&lt;Resource&gt;</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/list">&lt;List&gt; View</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/show">&lt;Show&gt; View</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/fields">&lt;Field&gt; Components</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/createandedit">&lt;Create&gt; and &lt;Edit&gt; Views</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/inputs">&lt;Input&gt; Components</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/authentication">Authentication</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/authorization">Authorization</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/actions">Querying the API</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/translation">Translation</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/customapp">Including in Another App</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/reference">Reference</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/faq">FAQ</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/ecosystem">Ecosystem</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/unittesting">Unit Testing</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/advancedtutorials">Advanced Tutorials</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/2.9.1/labs">Labs</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Querying the API</h1></header><article><div><span><p>Admin interfaces often have to query the API beyond CRUD requests. For instance, a user profile page may need to get the User object based on a user id. Or, users may want to an &quot;Approve&quot; a comment by pressing a button, and this action should update the <code>is_approved</code> property and save the updated record in one click.</p>
+<p>React-admin provides special hooks to emit read and write queries to the <code>dataProvider</code>, which in turn sends requests to your API.</p>
+<h2><a class="anchor" aria-hidden="true" id="usequery-hook"></a><a href="#usequery-hook" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>useQuery</code> Hook</h2>
+<p>Use the <code>useQuery</code> hook to emit a read query to the API when a component mounts. Call it with an object having the same fields as the parameters expected by the <a href="/ra-doc-usaurus/docs/2.9.1/dataprovider"><code>dataProvider</code></a>:</p>
+<ul>
+<li><code>type</code>: The Query type, e.g <code>GET_LIST</code></li>
+<li><code>resource</code>: The Resource name, e.g. &quot;posts&quot;</li>
+<li><code>payload</code>: Query parameters. Depends on the query type.</li>
+</ul>
+<p>The return value of <code>useQuery</code> is an object, which updates according to the request state:</p>
+<ul>
+<li>start: <code>{ loading: true, loaded: false }</code></li>
+<li>success: <code>{ data: [data from response], total: [total from response], loading: false, loaded: true }</code></li>
+<li>error: <code>{ error: [error from response], loading: false, loaded: true }</code></li>
+</ul>
+<p>Here is an implementation of a user profile component using the <code>useQuery</code> hook:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">import</span> { useQuery, GET_ONE } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-keyword">const</span> UserProfile = <span class="hljs-function">(<span class="hljs-params">{ record }</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> { loaded, error, data } = useQuery({
+        <span class="hljs-attr">type</span>: GET_ONE,
+        <span class="hljs-attr">resource</span>: <span class="hljs-string">'users'</span>,
+        <span class="hljs-attr">payload</span>: { <span class="hljs-attr">id</span>: record.id }
+    });
+    <span class="hljs-keyword">if</span> (!loaded) { <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Loading</span> /&gt;</span>; }
+    if (error) { return <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>ERROR<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>; }
+    return <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>User {data.username}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>;
+};
+</span></code></pre>
+<p>Under the hood, <code>useQuery</code> dispatches a Redux action (named <code>CUSTOM_FETCH</code>), which triggers the global loading indicator in the top bar. This action then queries your <code>dataProvider</code>, passing it the exact same parameters.</p>
+<p>In this example, the <code>dataProvider</code> receives a query for <code>('GET_ONE', 'users', { id: 123 })</code>. It should return a Promise for a response with a <code>data</code> key looking like <code>{ data: { id: 123, username: 'john_doe', firstName: 'John', lastName: 'Doe' } }</code>. That <code>data</code> ends up in the hook return value, and the loading indicator stops spinning.</p>
+<p>Here is another example usage of <code>useQuery</code>, this time to display a list of users:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">import</span> { useQuery, GET_LIST } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-keyword">const</span> UserList = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">const</span> { loading, error, data, total } = useQuery({
+        <span class="hljs-attr">type</span>: GET_LIST,
+        <span class="hljs-attr">resource</span>: <span class="hljs-string">'users'</span>,
+        <span class="hljs-attr">payload</span>: {
+            <span class="hljs-attr">pagination</span>: { <span class="hljs-attr">page</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">perPage</span>: <span class="hljs-number">10</span> },
+            <span class="hljs-attr">sort</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'username'</span>, <span class="hljs-attr">order</span>: <span class="hljs-string">'ASC'</span> },
+        }
+    });
+    <span class="hljs-keyword">if</span> (loading) { <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Loading</span> /&gt;</span>; }
+    if (error) { return <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>ERROR<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>; }
+    return (
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Total users: {total}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+                {data.map(user =&gt; <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{user.username}</span>&gt;</span>{user.username}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>)}
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    );
+};
+</span></code></pre>
+<p>As a reminder, here are the read query types handled by data providers:</p>
+<table>
+<thead>
+<tr><th>Type</th><th>Usage</th><th>Params format</th><th>Response format</th></tr>
+</thead>
+<tbody>
+<tr><td><code>GET_LIST</code></td><td>Search for resources</td><td><code>{ pagination: { page: {int} , perPage: {int} }, sort: { field: {string}, order: {string} }, filter: {Object} }</code></td><td><code>{ data: {Record[]}, total: {int} }</code></td></tr>
+<tr><td><code>GET_ONE</code></td><td>Read a single resource, by id</td><td><code>{ id: {mixed} }</code></td><td><code>{ data: {Record} }</code></td></tr>
+<tr><td><code>GET_MANY</code></td><td>Read a list of resource, by ids</td><td><code>{ ids: {mixed[]} }</code></td><td><code>{ data: {Record[]} }</code></td></tr>
+<tr><td><code>GET_MANY_REFERENCE</code></td><td>Read a list of resources related to another one</td><td><code>{ target: {string}, id: {mixed}, pagination: { page: {int} , perPage: {int} }, sort: { field: {string}, order: {string} }, filter: {Object} }</code></td><td><code>{ data: {Record[]} }</code></td></tr>
+</tbody>
+</table>
+<p>You can destructure the return value of the <code>useQuery</code> hook as <code>{ data, total, error, loading, loaded }</code>.</p>
+<p><strong>Tip</strong>: Your <code>dataProvider</code> should return the <code>total</code> value for list queries only, to express the total number of results (which may be higher than the number of returned results if the response is paginated).</p>
+<h2><a class="anchor" aria-hidden="true" id="usequerywithstore-hook"></a><a href="#usequerywithstore-hook" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>useQueryWithStore</code> Hook</h2>
+<p>Internally, react-admin uses a more powerful version of <code>useQuery</code> called <code>useQueryWithStore</code>, which has an internal cache. In practice, <code>useQueryWithStore</code> persist the response from the dataProvider in the internal react-admin store, so that result remains available if the hook is called again in the future.</p>
+<p>You can use this hook to avoid showing the loading indicator if the query was already fetched once.</p>
+<pre><code class="hljs css language-diff"><span class="hljs-deletion">-import { useQuery, GET_ONE } from 'react-admin';</span>
+<span class="hljs-addition">+import { useQueryWithStore, GET_ONE } from 'react-admin';</span>
+
+const UserProfile = ({ record }) =&gt; {
+<span class="hljs-deletion">-   const { loaded, error, data } = useQuery({</span>
+<span class="hljs-addition">+   const { loaded, error, data } = useQueryWithStore({</span>
+        type: GET_ONE,
+        resource: 'users',
+        payload: { id: record.id }
+    });
+    if (!loaded) { return &lt;Loading /&gt;; }
+    if (error) { return &lt;p&gt;ERROR&lt;/p&gt;; }
+    return &lt;div&gt;User {data.username}&lt;/div&gt;;
+};
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="usemutation-hook"></a><a href="#usemutation-hook" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>useMutation</code> Hook</h2>
+<p><code>useQuery</code> emits the request to the <code>dataProvider</code> as soon as the component mounts. To emit the request based on a user action, use the <code>useMutation</code> hook instead. This hook takes the same arguments as <code>useQuery</code>, but returns a callback that emits the request when executed, and an object containing the request state:</p>
+<ul>
+<li>mount: { loading: false, loaded: false }</li>
+<li>mutate called: { loading: true, loaded: false }</li>
+<li>success: { data: [data from response], total: [total from response], loading: false, loaded: true }</li>
+<li>error: { error: [error from response], loading: false, loaded: true }</li>
+</ul>
+<p>Here is an implementation of an &quot;Approve&quot; button:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/comments/ApproveButton.js</span>
+<span class="hljs-keyword">import</span> { useMutation, UPDATE } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-keyword">const</span> ApproveButton = <span class="hljs-function">(<span class="hljs-params">{ record }</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> [approve, { loading }] = useMutation({
+        <span class="hljs-attr">type</span>: UPDATE,
+        <span class="hljs-attr">resource</span>: <span class="hljs-string">'comments'</span>,
+        <span class="hljs-attr">payload</span>: { <span class="hljs-attr">id</span>: record.id, <span class="hljs-attr">data</span>: { <span class="hljs-attr">isApproved</span>: <span class="hljs-literal">true</span> } }
+    });
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">FlatButton</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"Approve"</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{approve}</span> <span class="hljs-attr">disabled</span>=<span class="hljs-string">{loading}</span> /&gt;</span>;
+};
+</span></code></pre>
+<p>Under the hood, <code>useMutation</code> also dispatches a Redux <code>CUSTOM_FETCH</code> action, and takes care of showing the global loading indicator when the request is emitted.</p>
+<p>User actions usually trigger write queries - that's why this hook is called <code>useMutation</code>. As a reminder, here are the write query types handled by data providers:</p>
+<table>
+<thead>
+<tr><th>Type</th><th>Usage</th><th>Params format</th><th>Response format</th></tr>
+</thead>
+<tbody>
+<tr><td><code>CREATE</code></td><td>Create a single resource</td><td><code>{ data: {Object} }</code></td><td><code>{ data: {Record} }</code></td></tr>
+<tr><td><code>UPDATE</code></td><td>Update a single resource</td><td><code>{ id: {mixed}, data: {Object}, previousData: {Object} }</code></td><td><code>{ data: {Record} }</code></td></tr>
+<tr><td><code>UPDATE_MANY</code></td><td>Update multiple resources</td><td><code>{ ids: {mixed[]}, data: {Object} }</code></td><td><code>{ data: {mixed[]} }</code> The ids which have been updated</td></tr>
+<tr><td><code>DELETE</code></td><td>Delete a single resource</td><td><code>{ id: {mixed}, previousData: {Object} }</code></td><td><code>{ data: {Record} }</code></td></tr>
+<tr><td><code>DELETE_MANY</code></td><td>Delete multiple resources</td><td><code>{ ids: {mixed[]} }</code></td><td><code>{ data: {mixed[]} }</code> The ids which have been deleted</td></tr>
+</tbody>
+</table>
+<p>You can destructure the return value of the <code>useMutation</code> hook as <code>[mutate, { data, total, error, loading, loaded }]</code>.</p>
+<p>This <code>ApproveButton</code> can be used right away, for instance in the list of comments, where <code>&lt;Datagrid&gt;</code> automatically injects the <code>record</code> to its children:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/comments/index.js</span>
+<span class="hljs-keyword">import</span> ApproveButton <span class="hljs-keyword">from</span> <span class="hljs-string">'./ApproveButton'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> CommentList = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span>
+    &lt;List {...props}&gt;
+        &lt;Datagrid&gt;
+            &lt;DateField source="created_at" /&gt;
+            &lt;TextField source="author.name" /&gt;
+            &lt;TextField source="body" /&gt;
+            &lt;BooleanField source="is_approved" /&gt;
+            &lt;ApproveButton /&gt;
+        &lt;/Datagrid&gt;
+    &lt;/List&gt;;
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="handling-side-effects"></a><a href="#handling-side-effects" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Handling Side Effects</h2>
+<p>Fetching data is called a <em>side effect</em>, since it calls the outside world, and is asynchronous. Usual actions may have other side effects, like showing a notification, or redirecting the user to another page. Both <code>useQuery</code> and <code>useMutation</code> hooks accept a second parameter in addition to the query, which lets you describe the options of the query, including success and failure side effects.</p>
+<p>Here is how to add notifications and a redirection to the <code>ApproveButton</code> component using that fourth parameter:</p>
+<pre><code class="hljs css language-diff">// in src/comments/ApproveButton.js
+import { useMutation, UPDATE } from 'react-admin';
+
+const ApproveButton = ({ record }) =&gt; {
+    const [approve, { loading }] = useMutation(
+        {
+            type: UPDATE,
+            resource: 'comments',
+            payload: { id: record.id, data: { isApproved: true } },
+        },
+<span class="hljs-addition">+       {</span>
+<span class="hljs-addition">+           onSuccess: {</span>
+<span class="hljs-addition">+               notification: { body: 'Comment approved', level: 'info' },</span>
+<span class="hljs-addition">+               redirectTo: '/comments',</span>
+<span class="hljs-addition">+           },</span>
+<span class="hljs-addition">+           onFailure: {</span>
+<span class="hljs-addition">+               notification: {</span>
+<span class="hljs-addition">+                   body: 'Error: comment not approved',</span>
+<span class="hljs-addition">+                   level: 'warning',</span>
+<span class="hljs-addition">+               },</span>
+<span class="hljs-addition">+           },</span>
+<span class="hljs-addition">+       }</span>
+    );
+    return &lt;FlatButton label="Approve" onClick={approve} disabled={loading} /&gt;;
+};
+</code></pre>
+<p>React-admin can handle the following side effects:</p>
+<ul>
+<li><code>notification</code>: Display a notification. The property value should be an object describing the notification to display. The <code>body</code> can be a translation key. <code>level</code> can be either <code>info</code> or <code>warning</code>.</li>
+<li><code>redirectTo</code>: Redirect the user to another page. The property value should be the path to redirect the user to.</li>
+<li><code>refresh</code>: Force a rerender of the current view (equivalent to pressing the Refresh button). Set to true to enable.</li>
+<li><code>unselectAll</code>: Unselect all lines in the current datagrid. Set to true to enable.</li>
+<li><code>callback</code>: Execute an arbitrary function. The value should be the function to execute. React-admin will call the function with an object as parameter (<code>{ requestPayload, payload, error }</code>). The <code>payload</code> contains the decoded response body when it's successfull. When it's failed, the response body is passed in the <code>error</code>.</li>
+<li><code>basePath</code>: This is not a side effect, but it's used internally to compute redirection paths. Set it when you have a redirection side effect.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="optimistic-rendering-and-undo"></a><a href="#optimistic-rendering-and-undo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Optimistic Rendering and Undo</h2>
+<p>In the previous example, after clicking on the &quot;Approve&quot; button, a spinner displays while the data provider is fetched. Then, users are redirected to the comments list. But in most cases, the server returns a success response, so the user waits for this response for nothing.</p>
+<p>For its own fetch actions, react-admin uses an approach called <em>optimistic rendering</em>. The idea is to handle the calls to the <code>dataProvider</code> on the client side first (i.e. updating entities in the Redux store), and re-render the screen immediately. The user sees the effect of their action with no delay. Then, react-admin applies the success side effects, and only after that, it triggers the call to the data provider. If the fetch ends with a success, react-admin does nothing more than a refresh to grab the latest data from the server. In most cases, the user sees no difference (the data in the Redux store and the data from the data provider are the same). If the fetch fails, react-admin shows an error notification, and forces a refresh, too.</p>
+<p>As a bonus, while the success notification is displayed, users have the ability to cancel the action <em>before</em> the data provider is even called.</p>
+<p>You can benefit from optimistic rendering when you call the <code>useQuery</code> and <code>useMutation</code> hooks, too. You just need to pass the <code>undoable: true</code> option in the options parameter:</p>
+<pre><code class="hljs css language-diff">// in src/comments/ApproveButton.js
+import { useMutation, UPDATE } from 'react-admin';
+
+const ApproveButton = ({ record }) =&gt; {
+    const [approve, { loading }] = useMutation(
+        {
+            type: UPDATE,
+            resource: 'comments',
+            payload: { id: record.id, data: { isApproved: true } },
+        },
+        {
+<span class="hljs-addition">+           undoable: true,</span>
+            onSuccess: {
+                notification: { body: 'Comment approved', level: 'info' },
+                redirectTo: '/comments',
+            },
+            onError: {
+                notification: { body: 'Error: comment not approved', level: 'warning' }
+            }
+        }
+    );
+    return &lt;FlatButton label="Approve" onClick={approve} disabled={loading} /&gt;;
+};
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="usedataprovider-hook"></a><a href="#usedataprovider-hook" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>useDataProvider</code> Hook</h2>
+<p>Sometimes <code>useQuery</code> and <code>useMutation</code> are too limited, for instance when you need to execute several queries in a row, and update the component state when all the queries have returned. For this use case, use the <code>useDataProvider</code> hook, which returns a <code>dataProvider</code> callback. This callback behaves exactly like the raw <code>dataProvider</code>, except it uses Redux under the hood. That means that it returns a Promise for the result.</p>
+<p>For instance, here is how to query for a list of pending reviews together with the author of each review:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">import</span> { useState, useEffect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { useDataProvider, GET_LIST, GET_MANY } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-keyword">const</span> Dashboard = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">const</span> dataProvider = useDataProvider();
+    <span class="hljs-keyword">const</span> [loading, setLoading] = useState(<span class="hljs-literal">true</span>);
+    <span class="hljs-keyword">const</span> [reviews, setReviews] = useState([]);
+    useEffect(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        (<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-comment">// useEffect doesn't accept async functions</span>
+            <span class="hljs-keyword">const</span> { <span class="hljs-attr">data</span>: pendingReviews } = <span class="hljs-keyword">await</span> dataProvider(
+                GET_LIST,
+                <span class="hljs-string">'reviews'</span>,
+                { <span class="hljs-attr">filter</span>: { <span class="hljs-attr">status</span>: <span class="hljs-string">'pending'</span> }, <span class="hljs-attr">sort</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'date'</span>, <span class="hljs-attr">order</span>: <span class="hljs-string">'DESC'</span> } }
+            );
+            <span class="hljs-keyword">const</span> customerIds = pendingReviews.map(<span class="hljs-function"><span class="hljs-params">review</span> =&gt;</span> review.customer_id);
+            <span class="hljs-keyword">const</span> uniqueCustomerIds = [...new <span class="hljs-built_in">Set</span>(customerIds)];
+            <span class="hljs-keyword">const</span> { <span class="hljs-attr">data</span>: customers } = <span class="hljs-keyword">await</span> dataProvider(
+                GET_MANY,
+                <span class="hljs-string">'customers'</span>,
+                { <span class="hljs-attr">ids</span>: uniqueCustomerIds }
+            );
+            <span class="hljs-keyword">const</span> customersById = customers.reduce(<span class="hljs-function">(<span class="hljs-params">prev, customer</span>) =&gt;</span> {
+                prev[customer.id] = customer;
+                <span class="hljs-keyword">return</span> prev;
+            }, {});
+            <span class="hljs-keyword">const</span> pendingReviewsWithCustomers = pendingReviews.map(<span class="hljs-function"><span class="hljs-params">review</span> =&gt;</span> ({
+                ...review,
+                <span class="hljs-attr">customer</span>: customersById[review.customer_id]
+            }))
+            setReviews(pendingReviewsWithCustomers);
+            setLoading(<span class="hljs-literal">false</span>);
+        })();
+    }, []);
+
+    <span class="hljs-keyword">if</span> (loading) { <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Loading</span> /&gt;</span>; }
+    return (
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+            {reviews.map(review =&gt; (
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{review.id}</span>&gt;</span>
+                    Review on Product {review.product_id}
+                    By {review.customer.username}:<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+                    {review.body}
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            ))}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    )
+}
+</span></code></pre>
+<p><code>useDataProvider</code> is more low-level than <code>useQuery</code> and <code>useMutation</code>, as it doesn't handle loading and error states (even though queries from <code>useDataProvider</code> trigger the global loading indicator). The <code>dataProvider</code> callback that it returns also accepts a fourth options parameter.</p>
+<h2><a class="anchor" aria-hidden="true" id="legacy-components-query-mutation-and-withdataprovider"></a><a href="#legacy-components-query-mutation-and-withdataprovider" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Legacy Components: <code>&lt;Query&gt;</code>, <code>&lt;Mutation&gt;</code>, and <code>withDataProvider</code></h2>
+<p>Before react had hooks, react-admin used render props and higher order components to provide the same functionality. Legacy code will likely contain instances of <code>&lt;Query&gt;</code>, <code>&lt;Mutation&gt;</code>, and <code>withDataProvider</code>. Their syntax, which is identical to their hook counterpart, is illustrated below.</p>
+<p>You can fetch and display a user profile using the <code>&lt;Query&gt;</code> component, which uses render props:</p>
+<p>{% raw %}</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">import</span> { Query, GET_ONE } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-keyword">const</span> UserProfile = <span class="hljs-function">(<span class="hljs-params">{ record }</span>) =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Query</span> <span class="hljs-attr">type</span>=<span class="hljs-string">{GET_ONE}</span> <span class="hljs-attr">resource</span>=<span class="hljs-string">"users"</span> <span class="hljs-attr">payload</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">id:</span> <span class="hljs-attr">record.id</span> }}&gt;</span>
+        {({ data, loading, error }) =&gt; {
+            if (loading) { return <span class="hljs-tag">&lt;<span class="hljs-name">Loading</span> /&gt;</span>; }
+            if (error) { return <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>ERROR<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>; }
+            return <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>User {data.username}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>;
+        }}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Query</span>&gt;</span></span>
+);
+</code></pre>
+<p>{% endraw %}</p>
+<p>Or, query a user list on the dashboard with the same <code>&lt;Query&gt;</code> component:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">import</span> { Query, GET_LIST } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-keyword">const</span> payload = {
+   <span class="hljs-attr">pagination</span>: { <span class="hljs-attr">page</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">perPage</span>: <span class="hljs-number">10</span> },
+   <span class="hljs-attr">sort</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'username'</span>, <span class="hljs-attr">order</span>: <span class="hljs-string">'ASC'</span> },
+};
+
+<span class="hljs-keyword">const</span> UserList = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Query</span> <span class="hljs-attr">type</span>=<span class="hljs-string">{GET_LIST}</span> <span class="hljs-attr">resource</span>=<span class="hljs-string">"users"</span> <span class="hljs-attr">payload</span>=<span class="hljs-string">{payload}</span>&gt;</span>
+        {({ data, total, loading, error }) =&gt; {
+            if (loading) { return <span class="hljs-tag">&lt;<span class="hljs-name">Loading</span> /&gt;</span>; }
+            if (error) { return <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>ERROR<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>; }
+            return (
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Total users: {total}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+                        {data.map(user =&gt; <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{user.username}</span>&gt;</span>{user.username}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>)}
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            );
+        }}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Query</span>&gt;</span></span>
+);
+</code></pre>
+<p>Just like <code>useQuery</code>, the <code>&lt;Query&gt;</code> component expects three parameters: <code>type</code>, <code>resource</code>, and <code>payload</code>. It fetches the data provider on mount, and passes the data to its child component once the response from the API arrives.</p>
+<p>And if you need to chain API calls, don't hesitate to nest <code>&lt;Query&gt;</code> components.</p>
+<p>When calling the API to update (&quot;mutate&quot;) data, use the <code>&lt;Mutation&gt;</code> component instead. It passes a callback to trigger the API call to its child function.</p>
+<p>Here is a version of the <code>&lt;ApproveButton&gt;</code> component demonstrating <code>&lt;Mutation&gt;</code>:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">import</span> { Mutation, UPDATE } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-keyword">const</span> options = {
+    <span class="hljs-attr">undoable</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">onSuccess</span>: {
+        <span class="hljs-attr">notification</span>: { <span class="hljs-attr">body</span>: <span class="hljs-string">'Comment approved'</span>, <span class="hljs-attr">level</span>: <span class="hljs-string">'info'</span> },
+        <span class="hljs-attr">redirectTo</span>: <span class="hljs-string">'/comments'</span>,
+    },
+    <span class="hljs-attr">onError</span>: {
+        <span class="hljs-attr">notification</span>: { <span class="hljs-attr">body</span>: <span class="hljs-string">'Error: comment not approved'</span>, <span class="hljs-attr">level</span>: <span class="hljs-string">'warning'</span> }
+    }
+};
+
+<span class="hljs-keyword">const</span> ApproveButton = <span class="hljs-function">(<span class="hljs-params">{ record }</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> payload = { <span class="hljs-attr">id</span>: record.id, <span class="hljs-attr">data</span>: { ...record, <span class="hljs-attr">is_approved</span>: <span class="hljs-literal">true</span> } };
+    <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Mutation</span>
+            <span class="hljs-attr">type</span>=<span class="hljs-string">{UPDATE}</span>
+            <span class="hljs-attr">resource</span>=<span class="hljs-string">"comments"</span>
+            <span class="hljs-attr">payload</span>=<span class="hljs-string">{payload}</span>
+            <span class="hljs-attr">options</span>=<span class="hljs-string">{options}</span>
+        &gt;</span>
+            {(approve, { loading }) =&gt; (
+                <span class="hljs-tag">&lt;<span class="hljs-name">FlatButton</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"Approve"</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{approve}</span> <span class="hljs-attr">disabled</span>=<span class="hljs-string">{loading}</span> /&gt;</span>
+            )}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Mutation</span>&gt;</span>
+    );
+}
+
+export default ApproveButton;
+</span></code></pre>
+<p>And here is the <code>&lt;Dashboard&gt;</code> component using the <code>withDataProvider</code> HOC instead of the <code>useProvider</code> hook:</p>
+<pre><code class="hljs css language-diff">import { useState, useEffect } from 'react';
+<span class="hljs-deletion">-import { useDataProvider, GET_LIST, GET_MANY } from 'react-admin';</span>
+<span class="hljs-addition">+import { wihtDataProvider, GET_LIST, GET_MANY } from 'react-admin';</span>
+
+<span class="hljs-deletion">-const Dashboard = () =&gt; {</span>
+<span class="hljs-addition">+const Dashboard = ({ dataProvider }) =&gt; {</span>
+<span class="hljs-deletion">-   const dataProvider = useDataProvider();</span>
+    const [loading, setLoading] = useState(true);
+    const [reviews, setReviews] = useState([]);
+    useEffect(() =&gt; {
+        (async function() { // useEffect doesn't accept async functions
+            const { data: pendingReviews } = await dataProvider(
+                GET_LIST,
+                'reviews',
+                { filter: { status: 'pending' }, sort: { field: 'date', order: 'DESC' } }
+            );
+            // ...
+        })();
+    }, []);
+
+    return (
+        &lt;div&gt;
+            {reviews.map(review =&gt; (
+                &lt;div key={review.id}&gt;
+                    Review on Product {review.product_id}
+                    By {review.customer.username}:&lt;br /&gt;
+                    {review.body}
+                &lt;/div&gt;
+            ))}
+        &lt;/div&gt;
+    )
+}
+
+<span class="hljs-deletion">-export default Dashboard;</span>
+<span class="hljs-addition">+export default withDataProvider(Dashboard);</span>
+</code></pre>
+<p>Note that these components are implemented in react-admin using the hooks described earlier. If you're writing new components, prefer the hooks, which are faster, and do not pollute the component tree.</p>
+<h2><a class="anchor" aria-hidden="true" id="querying-the-api-with-fetch"></a><a href="#querying-the-api-with-fetch" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Querying The API With <code>fetch</code></h2>
+<p><code>useQuery</code>, <code>useMutation</code> and <code>useDataProvider</code> are &quot;the react-admin way&quot; to query the API, but nothing prevents you from using <code>fetch</code> if you want. For instance, when you don't want to add some routing logic to the data provider for a RPC method on your API, that makes perfect sense.</p>
+<p>There is no special react-admin sauce in that case. Here is an example implementation of calling <code>fetch</code> in a component:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/comments/ApproveButton.js</span>
+<span class="hljs-keyword">import</span> React, { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { useDispatch } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+<span class="hljs-keyword">import</span> { showNotification, fetchStart, fetchEnd } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+<span class="hljs-keyword">import</span> { push } <span class="hljs-keyword">from</span> <span class="hljs-string">'connected-react-router'</span>;
+
+<span class="hljs-keyword">const</span> ApproveButton = <span class="hljs-function">(<span class="hljs-params">{ record }</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> dispatch = useDispatch();
+    <span class="hljs-keyword">const</span> [loading, setLoading] = useState(<span class="hljs-literal">false</span>;)
+    <span class="hljs-keyword">const</span> handleClick = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        setLoading(<span class="hljs-literal">true</span>);
+        dispatch(fetchStart()); <span class="hljs-comment">// start the global loading indicator </span>
+        <span class="hljs-keyword">const</span> updatedRecord = { ...record, <span class="hljs-attr">is_approved</span>: <span class="hljs-literal">true</span> };
+        fetch(<span class="hljs-string">`/comments/<span class="hljs-subst">${record.id}</span>`</span>, { <span class="hljs-attr">method</span>: <span class="hljs-string">'PUT'</span>, <span class="hljs-attr">body</span>: updatedRecord })
+            .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+                dispatch(showNotification(<span class="hljs-string">'Comment approved'</span>));
+                dispatch(push(<span class="hljs-string">'/comments'</span>));
+            })
+            .catch(<span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> {
+                dispatch(showNotification(<span class="hljs-string">'Error: comment not approved'</span>, <span class="hljs-string">'warning'</span>))
+            })
+            .finally(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+                setLoading(<span class="hljs-literal">false</span>);
+                dispatch(fetchEnd()); <span class="hljs-comment">// stop the global loading indicator</span>
+            });
+    }
+
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"Approve"</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{handleClick}</span> <span class="hljs-attr">disabled</span>=<span class="hljs-string">{loading}</span> /&gt;</span>;
+}
+
+export default ApproveButton;
+</span></code></pre>
+<p>If you use <code>fetch</code>, you'll have to handle side effects on your own using Redux actions, as shown in this example.</p>
+<p><code>showNotification</code> and <code>push</code> are <em>action creators</em>. This is a Redux term for functions that return a simple action object.</p>
+<p><strong>TIP</strong>: APIs often require a bit of HTTP plumbing to deal with authentication, query parameters, encoding, headers, etc. It turns out you probably already have a function that maps from a REST request to an HTTP request: your <a href="/ra-doc-usaurus/docs/2.9.1/dataprovider">Data Provider</a>. So it's often better to use <code>useDataProvider</code> instead of <code>fetch</code>.</p>
+<h2><a class="anchor" aria-hidden="true" id="using-a-custom-action-creator"></a><a href="#using-a-custom-action-creator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using a Custom Action Creator</h2>
+<p>In some rare cases, several components may share the same data fetching logic. In these cases, you will probably want to extract that logic into a custom Redux action.</p>
+<p>Warning: This is for advanced use cases only, and it requires a good level of understanding of Redux and react-admin internals. In most cases, <code>useDataProvider</code> is enough.</p>
+<p>First, extract the request into a custom action creator. Use the dataProvider verb (<code>UPDATE</code>) as the <code>fetch</code> meta, pass the resource name as the <code>resource</code> meta, and pass the request parameters as the action <code>payload</code>:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/comment/commentActions.js</span>
+<span class="hljs-keyword">import</span> { UPDATE } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> COMMENT_APPROVE = <span class="hljs-string">'COMMENT_APPROVE'</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> commentApprove = <span class="hljs-function">(<span class="hljs-params">id, data, basePath</span>) =&gt;</span> ({
+    <span class="hljs-attr">type</span>: COMMENT_APPROVE,
+    <span class="hljs-attr">payload</span>: { id, <span class="hljs-attr">data</span>: { ...data, <span class="hljs-attr">is_approved</span>: <span class="hljs-literal">true</span> } },
+    <span class="hljs-attr">meta</span>: { <span class="hljs-attr">fetch</span>: UPDATE, <span class="hljs-attr">resource</span>: <span class="hljs-string">'comments'</span> },
+});
+</code></pre>
+<p>Upon dispatch, this action will trigger the call to <code>dataProvider(UPDATE, 'comments', { id, data: { ...data, is_approved: true })</code>, dispatch a <code>COMMENT_APPROVE_LOADING</code> action, then after receiving the response, dispatch either a <code>COMMENT_APPROVE_SUCCESS</code>, or a <code>COMMENT_APPROVE_FAILURE</code>.</p>
+<p>To use the new action creator in the component, <code>dispatch</code> it:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/comments/ApproveButton.js</span>
+<span class="hljs-keyword">import</span> { dispatch } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+<span class="hljs-keyword">import</span> { commentApprove } <span class="hljs-keyword">from</span> <span class="hljs-string">'./commentActions'</span>;
+
+<span class="hljs-keyword">const</span> ApproveButton = <span class="hljs-function">(<span class="hljs-params">{ record }</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> dispatch = useDispatch();
+    <span class="hljs-keyword">const</span> handleClick = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        dispatch(commentApprove(record.id, record));
+        <span class="hljs-comment">// how about push and showNotification?</span>
+    }
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{handleClick}</span>&gt;</span>Approve<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span></span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> ApproveButton;
+</code></pre>
+<p>It works fine: when a user presses the &quot;Approve&quot; button, the API receives the <code>UPDATE</code> call, and that approves the comment. Another added benefit of using custom actions with the <code>fetch</code> meta is that react-admin automatically handles the loading state, so you don't need to mess up with <code>fetchStart()</code> and <code>fetchEnd()</code> manually.</p>
+<p>But it's not possible to call <code>push</code> or <code>showNotification</code> in <code>handleClick</code> anymore. This is because <code>commentApprove()</code> returns immediately, whether the API call succeeds or not. How can you run a function only when the action succeeds?</p>
+<h2><a class="anchor" aria-hidden="true" id="adding-side-effects-to-actions"></a><a href="#adding-side-effects-to-actions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Adding Side Effects to Actions</h2>
+<p>Just like for the <code>useDataProvider</code> hook, you can associate side effects to a fetch action declaratively by setting the appropriate keys in the action <code>meta</code>.</p>
+<p>So the side effects will be declared in the action creator rather than in the component. For instance, to display a notification when the <code>COMMENT_APPROVE</code> action is successfully dispatched, add the <code>notification</code> meta:</p>
+<pre><code class="hljs css language-diff">// in src/comment/commentActions.js
+import { UPDATE } from 'react-admin';
+export const COMMENT_APPROVE = 'COMMENT_APPROVE';
+export const commentApprove = (id, data, basePath) =&gt; ({
+    type: COMMENT_APPROVE,
+    payload: { id, data: { ...data, is_approved: true } },
+    meta: {
+        resource: 'comments',
+        fetch: UPDATE,
+<span class="hljs-addition">+       onSuccess: {</span>
+<span class="hljs-addition">+           notification: {</span>
+<span class="hljs-addition">+               body: 'resources.comments.notification.approved_success',</span>
+<span class="hljs-addition">+               level: 'info',</span>
+<span class="hljs-addition">+           },</span>
+<span class="hljs-addition">+           redirectTo: '/comments',</span>
+<span class="hljs-addition">+           basePath,</span>
+<span class="hljs-addition">+       },</span>
+<span class="hljs-addition">+       onFailure: {</span>
+<span class="hljs-addition">+           notification: {</span>
+<span class="hljs-addition">+               body: 'resources.comments.notification.approved_failure',</span>
+<span class="hljs-addition">+               level: 'warning',</span>
+<span class="hljs-addition">+           },</span>
+<span class="hljs-addition">+       },</span>
+    },
+});
+</code></pre>
+<p>The side effects accepted in the <code>meta</code> field of the action are the same as in the fourth parameter of the function returned by <code>useQuery</code>, <code>useMutation</code>, or <code>withDataProvider</code>:</p>
+<ul>
+<li><code>notification</code>: Display a notification. The property value should be an object describing the notification to display. The <code>body</code> can be a translation key. <code>level</code> can be either <code>info</code> or <code>warning</code>.</li>
+<li><code>redirectTo</code>: Redirect the user to another page. The property value should be the path to redirect the user to.</li>
+<li><code>refresh</code>: Force a rerender of the current view (equivalent to pressing the Refresh button). Set to true to enable.</li>
+<li><code>unselectAll</code>: Unselect all lines in the current datagrid. Set to true to enable.</li>
+<li><code>callback</code>: Execute an arbitrary function. The value should be the function to execute. React-admin will call the function with an object as parameter (<code>{ requestPayload, payload, error }</code>). The <code>payload</code> contains the decoded response body when it's successfull. When it's failed, the response body is passed in the <code>error</code>.</li>
+<li><code>basePath</code>: This is not a side effect, but it's used internally to compute redirection paths. Set it when you have a redirection side effect.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="making-an-action-undoable"></a><a href="#making-an-action-undoable" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Making An Action Undoable</h2>
+<p>when using the <code>useMutation</code> hook, you could trigger optimistic rendering and get an undo button for free. The same feature is possible using custom actions. You need to decorate the action with the <code>startUndoable</code> action creator:</p>
+<pre><code class="hljs css language-diff">// in src/comments/ApproveButton.js
+import { dispatch } from 'react-redux';
+import { commentApprove } from './commentActions';
+<span class="hljs-addition">+import { startUndoable } from 'react-admin';</span>
+
+const ApproveButton = ({ record }) =&gt; {
+    const dispatch = useDispatch();
+    const handleClick = () =&gt; {
+<span class="hljs-deletion">-       dispatch(commentApprove(record.id, record));</span>
+<span class="hljs-addition">+       dispatch(startUndoable(commentApprove(record.id, record)));</span>
+    }
+    return &lt;Button onClick={handleClick}&gt;Approve&lt;/Button&gt;;
+}
+
+export default ApproveButton;
+</code></pre>
+<p>And that's all it takes to make a fetch action optimistic.</p>
+<h2><a class="anchor" aria-hidden="true" id="altering-the-form-values-before-submitting"></a><a href="#altering-the-form-values-before-submitting" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Altering the Form Values before Submitting</h2>
+<p>Sometimes, you may want your custom action to alter the form values before actually sending them to the <code>dataProvider</code>. For those cases, you should know that every buttons inside a form <a href="/ra-doc-usaurus/docs/2.9.1/createandedit#toolbar">Toolbar</a> receive two props:</p>
+<ul>
+<li><code>handleSubmitWithRedirect</code> which calls the default form save methods</li>
+<li><code>handleSubmit</code> which is the same prop as in <a href="https://redux-form.com/7.4.2/docs/api/props.md/#-code-handlesubmit-eventorsubmit-function-code-"><code>react-form</code></a></li>
+</ul>
+<p>Knowing this, you can dispatch a custom action with a button and still benefit from the default crud action side effects (notifications, optimistic ui, undo, etc.). For instance, in the <code>simple</code> example:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { dispatch } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+<span class="hljs-keyword">import</span> { crudCreate, SaveButton, Toolbar } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-comment">// A custom action creator which modifies the values before calling the default crudCreate action creator</span>
+<span class="hljs-keyword">const</span> addComment = <span class="hljs-function">(<span class="hljs-params">values, basePath, redirectTo</span>) =&gt;</span>
+    crudCreate(<span class="hljs-string">'posts'</span>, { ...values, <span class="hljs-attr">average_note</span>: <span class="hljs-number">10</span> }, basePath, redirectTo);
+
+<span class="hljs-keyword">const</span> SaveWithNoteButtonView = <span class="hljs-function">(<span class="hljs-params">{ handleSubmitWithRedirect, ...props }</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> handleClick = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">const</span> { basePath, handleSubmit, redirect } = props;
+        <span class="hljs-keyword">return</span> handleSubmit(<span class="hljs-function"><span class="hljs-params">values</span> =&gt;</span> {
+            dispatch(addComment(values, basePath, redirect));
+        });
+    };
+
+    <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">SaveButton</span>
+            <span class="hljs-attr">handleSubmitWithRedirect</span>=<span class="hljs-string">{handleClick}</span>
+            {<span class="hljs-attr">...props</span>}
+        /&gt;</span>
+    );
+}
+</span></code></pre>
+<p>This button can be used in the <code>PostCreateToolbar</code> component:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">const</span> PostCreateToolbar = <span class="hljs-function"><span class="hljs-params">props</span> =&gt;</span> (
+    &lt;Toolbar {...props}&gt;
+        &lt;SaveButton
+            label="post.action.save_and_show"
+            redirect="show"
+            submitOnEnter={true}
+        /&gt;
+        &lt;SaveWithNoteButton
+            label="post.action.save_with_average_note"
+            redirect="show"
+            submitOnEnter={false}
+            variant="text"
+        /&gt;
+    &lt;/Toolbar&gt;
+);
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="custom-side-effects"></a><a href="#custom-side-effects" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Custom Side Effects</h2>
+<p>Sometimes, you may want to trigger other <em>side effects</em> - like closing a popup window, or sending a message to an analytics server. The easiest way to achieve this is to use the <code>callback</code> side effect:</p>
+<pre><code class="hljs css language-diff">// in src/comment/commentActions.js
+import { UPDATE } from 'react-admin';
+export const COMMENT_APPROVE = 'COMMENT_APPROVE';
+export const commentApprove = (id, data, basePath) =&gt; ({
+    type: COMMENT_APPROVE,
+    payload: { id, data: { ...data, is_approved: true } },
+    meta: {
+        resource: 'comments',
+        fetch: UPDATE,
+        onSuccess: {
+            notification: {
+                body: 'resources.comments.notification.approved_success',
+                level: 'info',
+            },
+            redirectTo: '/comments',
+<span class="hljs-addition">+           callback: ({ payload, requestPayload }) =&gt; { /* your own logic */ }</span>
+            basePath,
+        },
+        onFailure: {
+            notification: {
+                body: 'resources.comments.notification.approved_failure',
+                level: 'warning',
+            },
+<span class="hljs-addition">+           callback: ({ payload, requestPayload }) =&gt; { /* your own logic */ }</span>
+        },
+    },
+});
+</code></pre>
+<p>Under the hood, <code>useDataProvider</code> uses the <code>callback</code> side effect to provide a Promise interface for dispatching fetch actions. As chaining custom side effects will quickly lead you to callback hell, we recommend that you use the <code>callback</code> side effect sparingly.</p>
+<h2><a class="anchor" aria-hidden="true" id="custom-sagas"></a><a href="#custom-sagas" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Custom Sagas</h2>
+<p>React-admin promotes a programming style where side effects are decoupled from the rest of the code, which has the benefit of making them testable.</p>
+<p>In react-admin, side effects are handled by Sagas. <a href="https://redux-saga.github.io/redux-saga/">Redux-saga</a> is a side effect library built for Redux, where side effects are defined by generator functions. If this is new to you, take a few minutes to go through the Saga documentation.</p>
+<p>Here is the generator function necessary to handle the side effects for a failed <code>COMMENT_APPROVE</code> action which would log the error with an external service such as <a href="https://sentry.io">Sentry</a>:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/comments/commentSaga.js</span>
+<span class="hljs-keyword">import</span> { call, takeEvery } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux-saga/effects'</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">commentApproveFailure</span>(<span class="hljs-params">{ error }</span>) </span>{
+    <span class="hljs-keyword">yield</span> call(Raven.captureException, error);
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">commentSaga</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">yield</span> takeEvery(<span class="hljs-string">'COMMENT_APPROVE_FAILURE'</span>, commentApproveFailure);
+}
+</code></pre>
+<p>Let's explain all of that, starting with the final <code>commentSaga</code> generator function. A <a href="http://exploringjs.com/es6/ch_generators.html">generator function</a> (denoted by the <code>*</code> in the function name) gets paused on statements called by <code>yield</code> - until the yielded statement returns. <code>yield takeEvery([ACTION_NAME], callback)</code> executes the provided callback <a href="https://redux-saga.github.io/redux-saga/docs/basics/UsingSagaHelpers.html">every time the related action is called</a>. To summarize, this will execute <code>commentApproveFailure</code> when the fetch initiated by <code>commentApprove()</code> fails.</p>
+<p>As for <code>commentApproveFailure</code>, it just dispatch a <a href="https://redux-saga.js.org/docs/api/#callfn-args"><code>call</code></a> side effect to the <code>captureException</code> function from the global <code>Raven</code> object.</p>
+<p>To use this saga, pass it in the <code>customSagas</code> props of the <code>&lt;Admin&gt;</code> component:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/App.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { Admin, Resource } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-keyword">import</span> { CommentList } <span class="hljs-keyword">from</span> <span class="hljs-string">'./comments'</span>;
+<span class="hljs-keyword">import</span> commentSaga <span class="hljs-keyword">from</span> <span class="hljs-string">'./comments/commentSaga'</span>;
+
+<span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Admin</span> <span class="hljs-attr">customSagas</span>=<span class="hljs-string">{[</span> <span class="hljs-attr">commentSaga</span> ]} <span class="hljs-attr">dataProvider</span>=<span class="hljs-string">{jsonServerProvider(</span>'<span class="hljs-attr">http:</span>//<span class="hljs-attr">jsonplaceholder.typicode.com</span>')}&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Resource</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"comments"</span> <span class="hljs-attr">list</span>=<span class="hljs-string">{CommentList}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Admin</span>&gt;</span>
+);
+
+export default App;
+</span></code></pre>
+<p>With this code, a failed review approval now sends the the correct signal to Sentry.</p>
+<p><strong>Tip</strong>:  The side effects are <a href="https://redux-saga.github.io/redux-saga/docs/introduction/BeginnerTutorial.html#making-our-code-testable">testable</a>, too.</p>
+<h2><a class="anchor" aria-hidden="true" id="using-a-custom-reducer"></a><a href="#using-a-custom-reducer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using a Custom Reducer</h2>
+<p>In addition to triggering REST calls, you may want to store the effect of your own actions in the application state. For instance, if you want to display a widget showing the current exchange rate for the bitcoin, you might need the following action:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/bitcoinRateReceived.js</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> BITCOIN_RATE_RECEIVED = <span class="hljs-string">'BITCOIN_RATE_RECEIVED'</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> bitcoinRateReceived = <span class="hljs-function">(<span class="hljs-params">rate</span>) =&gt;</span> ({
+    <span class="hljs-attr">type</span>: BITCOIN_RATE_RECEIVED,
+    <span class="hljs-attr">payload</span>: { rate },
+});
+</code></pre>
+<p>This action can be triggered on mount by the following component:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/BitCoinRate.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { dispatch } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+<span class="hljs-keyword">import</span> { bitcoinRateReceived } <span class="hljs-keyword">from</span> <span class="hljs-string">'./bitcoinRateReceived'</span>;
+
+<span class="hljs-keyword">const</span> BitCoinRate = <span class="hljs-function">(<span class="hljs-params">{ rate }</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> dispatch = useDispatch();
+    useEffect(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        fetch(<span class="hljs-string">'https://blockchain.info/fr/ticker'</span>)
+            .then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> response.json())
+            .then(<span class="hljs-function"><span class="hljs-params">rates</span> =&gt;</span> rates.USD[<span class="hljs-string">'15m'</span>])
+            .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> dispatch(bitcoinRateReceived(rate))) <span class="hljs-comment">// dispatch action when the response is received</span>
+    }, []);
+
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Current bitcoin value: {rate}$<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> BitCoinRate;
+</code></pre>
+<p>In order to put the rate passed to <code>bitcoinRateReceived()</code> into the Redux store, you'll need a reducer:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/rateReducer.js</span>
+<span class="hljs-keyword">import</span> { BITCOIN_RATE_RECEIVED } <span class="hljs-keyword">from</span> <span class="hljs-string">'./bitcoinRateReceived'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (previousState = <span class="hljs-number">0</span>, { type, payload }) =&gt; {
+    <span class="hljs-keyword">if</span> (type === BITCOIN_RATE_RECEIVED) {
+        <span class="hljs-keyword">return</span> payload.rate;
+    }
+    <span class="hljs-keyword">return</span> previousState;
+}
+</code></pre>
+<p>Now the question is: How can you put this reducer in the <code>&lt;Admin&gt;</code> app? Simple: use the <code>customReducers</code> props:</p>
+<p>{% raw %}</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/App.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { Admin } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-keyword">import</span> rate <span class="hljs-keyword">from</span> <span class="hljs-string">'./rateReducer'</span>;
+
+<span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Admin</span> <span class="hljs-attr">customReducers</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">rate</span> }} <span class="hljs-attr">dataProvider</span>=<span class="hljs-string">{jsonServerProvider(</span>'<span class="hljs-attr">http:</span>//<span class="hljs-attr">jsonplaceholder.typicode.com</span>')}&gt;</span>
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Admin</span>&gt;</span></span>
+);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> App;
+</code></pre>
+<p>{% endraw %}</p>
+<p><strong>Tip</strong>: You can avoid storing data in the Redux state by storing data in a component state instead. It's much less complicated to deal with, and more performant, too. Use the global state only when you need to access data from several components which are far away in the application tree.</p>
+<h2><a class="anchor" aria-hidden="true" id="list-bulk-actions"></a><a href="#list-bulk-actions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>List Bulk Actions</h2>
+<p>Almost everything we saw before about custom actions is true for custom <code>List</code> bulk action buttons too, with the following few differences:</p>
+<ul>
+<li>Bulk action button components receive the following props: <code>resource</code>, <code>selectedIds</code> and <code>filterValues</code></li>
+<li>They do not receive the current record in the <code>record</code> prop as there are many of them.</li>
+</ul>
+<p>You can find a complete example of a custom Bulk Action button in the <code>List</code> documentation, in the <a href="/List.html#bulk-action-buttons">Bulk Action Buttons</a> section.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/ra-doc-usaurus/docs/2.9.1/authorization"><span class="arrow-prev">← </span><span>Authorization</span></a><a class="docs-next button" href="/ra-doc-usaurus/docs/2.9.1/translation"><span>Translation</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#usequery-hook"><code>useQuery</code> Hook</a></li><li><a href="#usequerywithstore-hook"><code>useQueryWithStore</code> Hook</a></li><li><a href="#usemutation-hook"><code>useMutation</code> Hook</a></li><li><a href="#handling-side-effects">Handling Side Effects</a></li><li><a href="#optimistic-rendering-and-undo">Optimistic Rendering and Undo</a></li><li><a href="#usedataprovider-hook"><code>useDataProvider</code> Hook</a></li><li><a href="#legacy-components-query-mutation-and-withdataprovider">Legacy Components: <code>&lt;Query&gt;</code>, <code>&lt;Mutation&gt;</code>, and <code>withDataProvider</code></a></li><li><a href="#querying-the-api-with-fetch">Querying The API With <code>fetch</code></a></li><li><a href="#using-a-custom-action-creator">Using a Custom Action Creator</a></li><li><a href="#adding-side-effects-to-actions">Adding Side Effects to Actions</a></li><li><a href="#making-an-action-undoable">Making An Action Undoable</a></li><li><a href="#altering-the-form-values-before-submitting">Altering the Form Values before Submitting</a></li><li><a href="#custom-side-effects">Custom Side Effects</a></li><li><a href="#custom-sagas">Custom Sagas</a></li><li><a href="#using-a-custom-reducer">Using a Custom Reducer</a></li><li><a href="#list-bulk-actions">List Bulk Actions</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/ra-doc-usaurus/" class="nav-home"><img src="/ra-doc-usaurus/img/logo.png" alt="React-Admin" width="66" height="58"/></a><div><h5>Docs</h5><a href="/ra-doc-usaurus/docs/en/readme.html">Documentation</a></div><div><h5>Community</h5><a href="https://marmelab.com/fr/blog#react-admin" target="_blank">Blog</a><a href="http://stackoverflow.com/questions/tagged/react-admin" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/marmelab" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/marmelab/react-admin">GitHub</a><a class="github-button" href="https://github.com/marmelab/react-admin" data-icon="octicon-star" data-count-href="/marmelab/react-admin/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2019 Marmelab</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '6778b641ebaffb925970cff06524e0c0',
+                indexName: 'react-admin',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {}
+              });
+            </script><script src="http://localhost:undefined/livereload.js"></script></body></html>

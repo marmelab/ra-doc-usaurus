@@ -1,0 +1,306 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Including React-Admin In Another Redux Application · React-Admin</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;The &lt;code&gt;&amp;lt;Admin&amp;gt;&lt;/code&gt; tag is a great shortcut got be up and running with react-admin in minutes. However, in many cases, you will want to embed the admin in another application, or customize the admin redux store deeply.&lt;/p&gt;
+"/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Including React-Admin In Another Redux Application · React-Admin"/><meta property="og:type" content="website"/><meta property="og:url" content="https://marmelab.github.io/ra-doc-usaurus/"/><meta property="og:description" content="&lt;p&gt;The &lt;code&gt;&amp;lt;Admin&amp;gt;&lt;/code&gt; tag is a great shortcut got be up and running with react-admin in minutes. However, in many cases, you will want to embed the admin in another application, or customize the admin redux store deeply.&lt;/p&gt;
+"/><meta property="og:image" content="https://marmelab.github.io/ra-doc-usaurus/img/logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://marmelab.github.io/ra-doc-usaurus/img/logo.png"/><link rel="shortcut icon" href="/ra-doc-usaurus/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><link rel="stylesheet" href="/ra-doc-usaurus/css/main.css"/><script src="/ra-doc-usaurus/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ra-doc-usaurus/"><img class="logo" src="/ra-doc-usaurus/img/logo.png" alt="React-Admin"/><h2 class="headerTitleWithLogo">React-Admin</h2></a><a href="/ra-doc-usaurus/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/ra-doc-usaurus/docs/next/readme" target="_self">Documentation</a></li><li class=""><a href="https://marmelab.com/fr/blog#react-admin" target="_self">Blog</a></li><li class=""><a href="https://github.com/marmelab/react-admin" target="_self">Github</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Misc</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introduction</h3><ul class=""><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/readme">Installation</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/tutorial">Tutorial</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/dataprovider">Data Providers</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/authentication">Authentication</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/authorization">Authorization</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/actions">Querying the API</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/translation">Translation</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Components</h3><ul class=""><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/admin">&lt;Admin&gt;</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/resource">&lt;Resource&gt;</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/list">&lt;List&gt; View</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/show">&lt;Show&gt; View</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/fields">&lt;Field&gt; Components</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/createandedit">&lt;Create&gt; and &lt;Edit&gt; Views</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/inputs">&lt;Input&gt; Components</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/reference">Reference</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Misc</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/ra-doc-usaurus/docs/next/customapp">Including in Another App</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/faq">FAQ</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/ecosystem">Ecosystem</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/unittesting">Unit Testing</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/advancedtutorials">Advanced Tutorials</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/labs">Labs</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Including React-Admin In Another Redux Application</h1></header><article><div><span><p>The <code>&lt;Admin&gt;</code> tag is a great shortcut got be up and running with react-admin in minutes. However, in many cases, you will want to embed the admin in another application, or customize the admin redux store deeply.</p>
+<p><strong>Tip</strong>: Before going for the Custom App route, explore all the options of <a href="/ra-doc-usaurus/docs/next/admin">the <code>&lt;Admin&gt;</code> component</a>. They allow you to add custom routes, custom reducers, custom sagas, and customize the layout.</p>
+<p>Fortunately, the <code>&lt;Admin&gt;</code> component detects when it's used inside an existing Redux <code>&lt;Provider&gt;</code>, and skips its own store initialization. That means that react-admin will work out of the box inside another redux application - provided, of course, the store is compatible.</p>
+<p>Beware that you need to know about <a href="http://redux.js.org/">redux</a>, <a href="https://github.com/reactjs/react-router">react-router</a>, and <a href="https://github.com/yelouafi/redux-saga">redux-saga</a> to go further.</p>
+<p>React-admin requires that the redux state contains at least 4 reducers: <code>admin</code>, <code>i18n</code>, <code>form</code>, and <code>router</code>. You can add more, or replace some of them with your own, but you can't remove or rename them. As it relies on redux-form, react-router, and redux-saga, react-admin also expects the store to use their middlewares.</p>
+<p>Here is the default store creation for react-admin:</p>
+<pre><code class="hljs css language-js"><span class="hljs-comment">// in src/createAdminStore.js</span>
+<span class="hljs-keyword">import</span> { applyMiddleware, combineReducers, compose, createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>;
+<span class="hljs-keyword">import</span> { routerMiddleware, connectRouter } <span class="hljs-keyword">from</span> <span class="hljs-string">'connected-react-router'</span>;
+<span class="hljs-keyword">import</span> { reducer <span class="hljs-keyword">as</span> formReducer } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux-form'</span>;
+<span class="hljs-keyword">import</span> createSagaMiddleware <span class="hljs-keyword">from</span> <span class="hljs-string">'redux-saga'</span>;
+<span class="hljs-keyword">import</span> { all, fork } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux-saga/effects'</span>;
+<span class="hljs-keyword">import</span> {
+    adminReducer,
+    adminSaga,
+    createAppReducer,
+    defaultI18nProvider,
+    i18nReducer,
+    formMiddleware,
+    USER_LOGOUT,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> ({
+    authProvider,
+    dataProvider,
+    i18nProvider = defaultI18nProvider,
+    history,
+    locale = <span class="hljs-string">'en'</span>,
+}) =&gt; {
+    <span class="hljs-keyword">const</span> reducer = combineReducers({
+        <span class="hljs-attr">admin</span>: adminReducer,
+        <span class="hljs-attr">i18n</span>: i18nReducer(locale, i18nProvider(locale)),
+        <span class="hljs-attr">form</span>: formReducer,
+        <span class="hljs-attr">router</span>: connectRouter(history),
+        { <span class="hljs-comment">/* add your own reducers here */</span> },
+    });
+    <span class="hljs-keyword">const</span> resettableAppReducer = <span class="hljs-function">(<span class="hljs-params">state, action</span>) =&gt;</span>
+        reducer(action.type !== USER_LOGOUT ? state : <span class="hljs-literal">undefined</span>, action);
+
+    <span class="hljs-keyword">const</span> saga = <span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">rootSaga</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">yield</span> all(
+            [
+                adminSaga(dataProvider, authProvider, i18nProvider),
+                <span class="hljs-comment">// add your own sagas here</span>
+            ].map(fork)
+        );
+    };
+    <span class="hljs-keyword">const</span> sagaMiddleware = createSagaMiddleware();
+
+    <span class="hljs-keyword">const</span> store = createStore(
+        resettableAppReducer,
+        { <span class="hljs-comment">/* set your initial state here */</span> },
+        compose(
+            applyMiddleware(
+                sagaMiddleware,
+                formMiddleware,
+                routerMiddleware(history),
+                <span class="hljs-comment">// add your own middlewares here</span>
+            ),
+            <span class="hljs-keyword">typeof</span> <span class="hljs-built_in">window</span> !== <span class="hljs-string">'undefined'</span> &amp;&amp; <span class="hljs-built_in">window</span>.__REDUX_DEVTOOLS_EXTENSION__
+                ? <span class="hljs-built_in">window</span>.__REDUX_DEVTOOLS_EXTENSION__()
+                : <span class="hljs-function"><span class="hljs-params">f</span> =&gt;</span> f
+            <span class="hljs-comment">// add your own enhancers here</span>
+        )
+    );
+    sagaMiddleware.run(saga);
+    <span class="hljs-keyword">return</span> store;
+};
+</code></pre>
+<p>You can use this script as a base and then add your own middleares or enhancers, e.g. to allow store persistence with <a href="https://github.com/rt2zz/redux-persist">redux-persist</a>.</p>
+<p>Then, use the <code>&lt;Admin&gt;</code> component as you would in a standalone application. Here is an example with 3 resources: <code>posts</code>, <code>comments</code>, and <code>users</code></p>
+<pre><code class="hljs css language-js"><span class="hljs-comment">// in src/App.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { Provider } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+<span class="hljs-keyword">import</span> { createHashHistory } <span class="hljs-keyword">from</span> <span class="hljs-string">'history'</span>;
+<span class="hljs-keyword">import</span> { Admin, Resource } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+<span class="hljs-keyword">import</span> restProvider <span class="hljs-keyword">from</span> <span class="hljs-string">'ra-data-simple-rest'</span>;
+<span class="hljs-keyword">import</span> defaultMessages <span class="hljs-keyword">from</span> <span class="hljs-string">'ra-language-english'</span>;
+
+<span class="hljs-keyword">import</span> createAdminStore <span class="hljs-keyword">from</span> <span class="hljs-string">'./createAdminStore'</span>;
+<span class="hljs-keyword">import</span> messages <span class="hljs-keyword">from</span> <span class="hljs-string">'./i18n'</span>;
+
+<span class="hljs-comment">// your app components</span>
+<span class="hljs-keyword">import</span> Dashboard <span class="hljs-keyword">from</span> <span class="hljs-string">'./Dashboard'</span>;
+<span class="hljs-keyword">import</span> { PostList, PostCreate, PostEdit, PostShow } <span class="hljs-keyword">from</span> <span class="hljs-string">'./Post'</span>;
+<span class="hljs-keyword">import</span> { CommentList, CommentEdit, CommentCreate } <span class="hljs-keyword">from</span> <span class="hljs-string">'./Comment'</span>;
+<span class="hljs-keyword">import</span> { UserList, UserEdit, UserCreate } <span class="hljs-keyword">from</span> <span class="hljs-string">'./User'</span>;
+
+<span class="hljs-comment">// side effects</span>
+<span class="hljs-keyword">const</span> authProvider = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">Promise</span>.resolve();
+<span class="hljs-keyword">const</span> dataProvider = restProvider(<span class="hljs-string">'http://path.to.my.api/'</span>);
+<span class="hljs-keyword">const</span> i18nProvider = <span class="hljs-function"><span class="hljs-params">locale</span> =&gt;</span> {
+    <span class="hljs-keyword">if</span> (locale !== <span class="hljs-string">'en'</span>) {
+        <span class="hljs-keyword">return</span> messages[locale];
+    }
+    <span class="hljs-keyword">return</span> defaultMessages;
+};
+<span class="hljs-keyword">const</span> history = createHashHistory();
+
+<span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+    &lt;Provider
+        store={createAdminStore({
+            authProvider,
+            dataProvider,
+            i18nProvider,
+            history,
+        })}
+    &gt;
+        &lt;Admin
+            authProvider={authProvider}
+            history={history}
+            title="My Admin"
+        &gt;
+            &lt;Resource name="posts" list={PostList} create={PostCreate} edit={PostEdit} show={PostShow} /&gt;
+            &lt;Resource name="comments" list={CommentList} edit={CommentEdit} create={CommentCreate} /&gt;
+            &lt;Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} /&gt;
+        &lt;/Admin&gt;
+    &lt;/Provider&gt;
+);
+
+export default App;
+</code></pre>
+<p><strong>Tip</strong>: One thing to pay attention to is that you must pass the same <code>history</code> and <code>authProvider</code> to both the redux Store creator and the <code>&lt;Admin&gt;</code> component. But you don't need to pass the <code>dataProvider</code> or the <code>i18nProvider</code>.</p>
+<h2><a class="anchor" aria-hidden="true" id="not-using-the-admin-components"></a><a href="#not-using-the-admin-components" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Not Using the <code>&lt;Admin&gt;</code> Components</h2>
+<p>The <code>&lt;Admin&gt;</code> component takes care of defining the store (unless you provide one, as seen above), of setting the Translation and Authentication contexts, and of bootstrapping the Router. In case you need to override any of these, you can use your own component instead of <code>&lt;Admin&gt;</code>.</p>
+<p>Here is the main code for bootstrapping a barebones react-admin application without <code>&lt;Admin&gt;</code>:</p>
+<pre><code class="hljs css language-diff">// in src/App.js
+import React from 'react';
+import { Provider } from 'react-redux';
+import { createHashHistory } from 'history';
+<span class="hljs-addition">+import { ConnectedRouter } from 'connected-react-router';</span>
+<span class="hljs-addition">+import { Switch, Route } from 'react-router-dom';</span>
+<span class="hljs-addition">+import withContext from 'recompose/withContext';</span>
+<span class="hljs-deletion">-import { Admin, Resource } from 'react-admin';</span>
+<span class="hljs-addition">+import { TranslationProvider, Resource } from 'react-admin';</span>
+import restProvider from 'ra-data-simple-rest';
+import defaultMessages from 'ra-language-english';
+<span class="hljs-addition">+import { ThemeProvider } from '@material-ui/styles';</span>
+<span class="hljs-addition">+import AppBar from '@material-ui/core/AppBar';</span>
+<span class="hljs-addition">+import Toolbar from '@material-ui/core/Toolbar';</span>
+<span class="hljs-addition">+import Typography from '@material-ui/core/Typography';</span>
+
+import createAdminStore from './createAdminStore';
+import messages from './i18n';
+
+// your app components
+import Dashboard from './Dashboard';
+import { PostList, PostCreate, PostEdit, PostShow } from './Post';
+import { CommentList, CommentEdit, CommentCreate } from './Comment';
+import { UserList, UserEdit, UserCreate } from './User';
+
+// side effects
+const authProvider = () =&gt; Promise.resolve();
+const dataProvider = restProvider('http://path.to.my.api/');
+const i18nProvider = locale =&gt; {
+    if (locale !== 'en') {
+        return messages[locale];
+    }
+    return defaultMessages;
+};
+const history = createHashHistory();
+
+const App = () =&gt; (
+    &lt;Provider
+        store={createAdminStore({
+            authProvider,
+            dataProvider,
+            i18nProvider,
+            history,
+        })}
+    &gt;
+<span class="hljs-deletion">-       &lt;Admin</span>
+<span class="hljs-deletion">-           authProvider={authProvider}</span>
+<span class="hljs-deletion">-           history={history}</span>
+<span class="hljs-deletion">-           title="My Admin"</span>
+<span class="hljs-deletion">-       &gt;</span>
+<span class="hljs-deletion">-           &lt;Resource name="posts" list={PostList} create={PostCreate} edit={PostEdit} show={PostShow} /&gt;</span>
+<span class="hljs-deletion">-           &lt;Resource name="comments" list={CommentList} edit={CommentEdit} create={CommentCreate} /&gt;</span>
+<span class="hljs-deletion">-           &lt;Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} /&gt;</span>
+<span class="hljs-addition">+       &lt;TranslationProvider&gt;</span>
+<span class="hljs-addition">+           &lt;ThemeProvider&gt;</span>
+<span class="hljs-addition">+               &lt;Resource name="posts" intent="registration" /&gt;</span>
+<span class="hljs-addition">+               &lt;Resource name="comments" intent="registration" /&gt;</span>
+<span class="hljs-addition">+               &lt;Resource name="users" intent="registration" /&gt;</span>
+<span class="hljs-addition">+               &lt;AppBar position="static" color="default"&gt;</span>
+<span class="hljs-addition">+                   &lt;Toolbar&gt;</span>
+<span class="hljs-addition">+                       &lt;Typography variant="h6" color="inherit"&gt;</span>
+<span class="hljs-addition">+                           My admin</span>
+<span class="hljs-addition">+                       &lt;/Typography&gt;</span>
+<span class="hljs-addition">+                   &lt;/Toolbar&gt;</span>
+<span class="hljs-addition">+               &lt;/AppBar&gt;</span>
+<span class="hljs-addition">+               &lt;ConnectedRouter history={history}&gt;</span>
+<span class="hljs-addition">+                   &lt;Switch&gt;</span>
+<span class="hljs-addition">+                       &lt;Route exact path="/" component={Dashboard} /&gt;</span>
+<span class="hljs-addition">+                       &lt;Route exact path="/posts" hasCreate render={(routeProps) =&gt; &lt;PostList resource="posts" {...routeProps} /&gt;} /&gt;</span>
+<span class="hljs-addition">+                       &lt;Route exact path="/posts/create" render={(routeProps) =&gt; &lt;PostCreate resource="posts" {...routeProps} /&gt;} /&gt;</span>
+<span class="hljs-addition">+                       &lt;Route exact path="/posts/:id" hasShow render={(routeProps) =&gt; &lt;PostEdit resource="posts" {...routeProps} /&gt;} /&gt;</span>
+<span class="hljs-addition">+                       &lt;Route exact path="/posts/:id/show" hasEdit render={(routeProps) =&gt; &lt;PostShow resource="posts" {...routeProps} /&gt;} /&gt;</span>
+<span class="hljs-addition">+                       &lt;Route exact path="/comments" hasCreate render={(routeProps) =&gt; &lt;CommentList resource="comments" {...routeProps} /&gt;} /&gt;</span>
+<span class="hljs-addition">+                       &lt;Route exact path="/comments/create" render={(routeProps) =&gt; &lt;CommentCreate resource="comments" {...routeProps} /&gt;} /&gt;</span>
+<span class="hljs-addition">+                       &lt;Route exact path="/comments/:id" render={(routeProps) =&gt; &lt;CommentEdit resource="comments" {...routeProps} /&gt;} /&gt;</span>
+<span class="hljs-addition">+                       &lt;Route exact path="/users" hasCreate render={(routeProps) =&gt; &lt;UsersList resource="users" {...routeProps} /&gt;} /&gt;</span>
+<span class="hljs-addition">+                       &lt;Route exact path="/users/create" render={(routeProps) =&gt; &lt;UsersCreate resource="users" {...routeProps} /&gt;} /&gt;</span>
+<span class="hljs-addition">+                       &lt;Route exact path="/users/:id" render={(routeProps) =&gt; &lt;UsersEdit resource="users" {...routeProps} /&gt;} /&gt;</span>
+<span class="hljs-addition">+                   &lt;/Switch&gt;</span>
+<span class="hljs-addition">+               &lt;/ConnectedRouter&gt;</span>
+<span class="hljs-addition">+           &lt;/ThemeProvider&gt;</span>
+<span class="hljs-addition">+       &lt;/TranslationProvider&gt;</span>
+<span class="hljs-deletion">-       &lt;/Admin&gt;</span>
+    &lt;/Provider&gt;
+);
+
+<span class="hljs-deletion">-export default App;</span>
+<span class="hljs-addition">+export default withContext(</span>
+<span class="hljs-addition">+   {</span>
+<span class="hljs-addition">+       authProvider: PropTypes.func,</span>
+<span class="hljs-addition">+   },</span>
+<span class="hljs-addition">+   () =&gt; ({ authProvider })</span>
+<span class="hljs-addition">+)(App);</span>
+</code></pre>
+<p>Note that this example still uses <code>&lt;Resource&gt;</code>, because this component lazily initializes the store for the resource data.</p>
+<p>This application has no sidebar, no theming, no <a href="/ra-doc-usaurus/docs/next/authentication#restricting-access-to-a-custom-page">auth control</a> - it's up to you to add these. From there on, you can customize pretty much anything you want.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/ra-doc-usaurus/docs/next/reference"><span class="arrow-prev">← </span><span>Reference</span></a><a class="docs-next button" href="/ra-doc-usaurus/docs/next/faq"><span>FAQ</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#not-using-the-admin-components">Not Using the <code>&lt;Admin&gt;</code> Components</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/ra-doc-usaurus/" class="nav-home"><img src="/ra-doc-usaurus/img/logo.png" alt="React-Admin" width="66" height="58"/></a><div><h5>Docs</h5><a href="/ra-doc-usaurus/docs/en/readme.html">Documentation</a></div><div><h5>Community</h5><a href="https://marmelab.com/fr/blog#react-admin" target="_blank">Blog</a><a href="http://stackoverflow.com/questions/tagged/react-admin" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/marmelab" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/marmelab/react-admin">GitHub</a><a class="github-button" href="https://github.com/marmelab/react-admin" data-icon="octicon-star" data-count-href="/marmelab/react-admin/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2019 Marmelab</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '6778b641ebaffb925970cff06524e0c0',
+                indexName: 'react-admin',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {}
+              });
+            </script><script src="http://localhost:undefined/livereload.js"></script></body></html>

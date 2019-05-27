@@ -1,0 +1,343 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>The Show View · React-Admin</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;The Show view displays a record fetched from the API in a read-only fashion. It delegates the actual rendering of the record to a layout component - usually &lt;code&gt;&amp;lt;SimpleShowLayout&amp;gt;&lt;/code&gt;. This layout component uses its children (&lt;a href=&quot;/ra-doc-usaurus/docs/next/fields&quot;&gt;&lt;code&gt;&amp;lt;Fields&amp;gt;&lt;/code&gt;&lt;/a&gt; components) to render each record field.&lt;/p&gt;
+"/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="The Show View · React-Admin"/><meta property="og:type" content="website"/><meta property="og:url" content="https://marmelab.github.io/ra-doc-usaurus/"/><meta property="og:description" content="&lt;p&gt;The Show view displays a record fetched from the API in a read-only fashion. It delegates the actual rendering of the record to a layout component - usually &lt;code&gt;&amp;lt;SimpleShowLayout&amp;gt;&lt;/code&gt;. This layout component uses its children (&lt;a href=&quot;/ra-doc-usaurus/docs/next/fields&quot;&gt;&lt;code&gt;&amp;lt;Fields&amp;gt;&lt;/code&gt;&lt;/a&gt; components) to render each record field.&lt;/p&gt;
+"/><meta property="og:image" content="https://marmelab.github.io/ra-doc-usaurus/img/logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://marmelab.github.io/ra-doc-usaurus/img/logo.png"/><link rel="shortcut icon" href="/ra-doc-usaurus/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><link rel="stylesheet" href="/ra-doc-usaurus/css/main.css"/><script src="/ra-doc-usaurus/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ra-doc-usaurus/"><img class="logo" src="/ra-doc-usaurus/img/logo.png" alt="React-Admin"/><h2 class="headerTitleWithLogo">React-Admin</h2></a><a href="/ra-doc-usaurus/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/ra-doc-usaurus/docs/next/readme" target="_self">Documentation</a></li><li class=""><a href="https://marmelab.com/fr/blog#react-admin" target="_self">Blog</a></li><li class=""><a href="https://github.com/marmelab/react-admin" target="_self">Github</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Components</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introduction</h3><ul class=""><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/readme">Installation</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/tutorial">Tutorial</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/dataprovider">Data Providers</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/authentication">Authentication</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/authorization">Authorization</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/actions">Querying the API</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/translation">Translation</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Components</h3><ul class=""><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/admin">&lt;Admin&gt;</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/resource">&lt;Resource&gt;</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/list">&lt;List&gt; View</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/ra-doc-usaurus/docs/next/show">&lt;Show&gt; View</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/fields">&lt;Field&gt; Components</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/createandedit">&lt;Create&gt; and &lt;Edit&gt; Views</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/inputs">&lt;Input&gt; Components</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/reference">Reference</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Misc</h3><ul class=""><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/customapp">Including in Another App</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/faq">FAQ</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/ecosystem">Ecosystem</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/unittesting">Unit Testing</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/advancedtutorials">Advanced Tutorials</a></li><li class="navListItem"><a class="navItem" href="/ra-doc-usaurus/docs/next/labs">Labs</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">The Show View</h1></header><article><div><span><p>The Show view displays a record fetched from the API in a read-only fashion. It delegates the actual rendering of the record to a layout component - usually <code>&lt;SimpleShowLayout&gt;</code>. This layout component uses its children (<a href="/ra-doc-usaurus/docs/next/fields"><code>&lt;Fields&gt;</code></a> components) to render each record field.</p>
+<p><img src="/ra-doc-usaurus/img/show-view.png" alt="post show view"></p>
+<h2><a class="anchor" aria-hidden="true" id="the-show-component"></a><a href="#the-show-component" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The <code>&lt;Show&gt;</code> component</h2>
+<p>The <code>&lt;Show&gt;</code> component renders the page title and actions, and fetches the record from the REST API. It is not responsible for rendering the actual record - that's the job of its child component (usually <code>&lt;SimpleShowLayout&gt;</code>), to which they pass the <code>record</code> as prop.</p>
+<p>Here are all the props accepted by the <code>&lt;Show&gt;</code> component:</p>
+<ul>
+<li><a href="#page-title"><code>title</code></a></li>
+<li><a href="#actions"><code>actions</code></a></li>
+<li><a href="#aside-component"><code>aside</code></a></li>
+</ul>
+<p>Here is the minimal code necessary to display a view to show a post:</p>
+<p>{% raw %}</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/App.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { Admin, Resource } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+<span class="hljs-keyword">import</span> jsonServerProvider <span class="hljs-keyword">from</span> <span class="hljs-string">'ra-data-json-server'</span>;
+
+<span class="hljs-keyword">import</span> { PostCreate, PostEdit, PostShow } <span class="hljs-keyword">from</span> <span class="hljs-string">'./posts'</span>;
+
+<span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+    &lt;Admin dataProvider={jsonServerProvider('http://jsonplaceholder.typicode.com')}&gt;
+        &lt;Resource name="posts" show={PostShow} create={PostCreate} edit={PostEdit} /&gt;
+    &lt;/Admin&gt;
+);
+
+export default App;
+
+// in src/posts.js
+import React from 'react';
+import { Show, SimpleShowLayout, TextField, DateField, EditButton, RichTextField } from 'react-admin';
+
+export const PostShow = (props) =&gt; (
+    &lt;Show {...props}&gt;
+        &lt;SimpleShowLayout&gt;
+            &lt;TextField source="title" /&gt;
+            &lt;TextField source="teaser" /&gt;
+            &lt;RichTextField source="body" /&gt;
+            &lt;DateField label="Publication date" source="created_at" /&gt;
+        &lt;/SimpleShowLayout&gt;
+    &lt;/Show&gt;
+);
+</code></pre>
+<p>{% endraw %}</p>
+<p>That's enough to display the post show view:</p>
+<p><img src="/ra-doc-usaurus/img/post-show.png" alt="post show view"></p>
+<h3><a class="anchor" aria-hidden="true" id="page-title"></a><a href="#page-title" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Page Title</h3>
+<p>By default, the title for the Show view is &quot;[resource_name] #[record_id]&quot;.</p>
+<p>You can customize this title by specifying a custom <code>title</code> prop:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> PostShow = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Show</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Post view"</span> {<span class="hljs-attr">...props</span>}&gt;</span>
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Show</span>&gt;</span></span>
+);
+</code></pre>
+<p>More interestingly, you can pass a component as <code>title</code>. React-admin clones this component and, in the <code>&lt;ShowView&gt;</code>, injects the current <code>record</code>. This allows to customize the title according to the current record:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">const</span> PostTitle = <span class="hljs-function">(<span class="hljs-params">{ record }</span>) =&gt;</span> {
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Post {record ? `"${record.title}"` : ''}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span>;
+};
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> PostShow = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Show</span> <span class="hljs-attr">title</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">PostTitle</span> /&gt;</span>} {...props}&gt;
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Show</span>&gt;</span></span>
+);
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="actions"></a><a href="#actions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Actions</h3>
+<p>You can replace the list of default actions by your own element using the <code>actions</code> prop:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">import</span> Button <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/core/Button'</span>;
+<span class="hljs-keyword">import</span> { EditButton, TopToolbar } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-keyword">const</span> PostShowActions = <span class="hljs-function">(<span class="hljs-params">{ basePath, data, resource }</span>) =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TopToolbar</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">EditButton</span> <span class="hljs-attr">basePath</span>=<span class="hljs-string">{basePath}</span> <span class="hljs-attr">record</span>=<span class="hljs-string">{data}</span> /&gt;</span>
+        {/* Add your custom actions */}
+        <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">color</span>=<span class="hljs-string">"primary"</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{customAction}</span>&gt;</span>Custom Action<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">TopToolbar</span>&gt;</span>
+);
+
+export const PostShow = (props) =&gt; (
+    <span class="hljs-tag">&lt;<span class="hljs-name">Show</span> <span class="hljs-attr">actions</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">PostShowActions</span> /&gt;</span>} {...props}&gt;
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Show</span>&gt;</span>
+);
+</span></code></pre>
+<h3><a class="anchor" aria-hidden="true" id="aside-component"></a><a href="#aside-component" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Aside component</h3>
+<p>You may want to display additional information on the side of the resource detail. Use the <code>aside</code> prop for that, passing the component of your choice:</p>
+<p>{% raw %}</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">const</span> Aside = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">width:</span> <span class="hljs-attr">200</span>, <span class="hljs-attr">margin:</span> '<span class="hljs-attr">1em</span>' }}&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Typography</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">"h6"</span>&gt;</span>Post details<span class="hljs-tag">&lt;/<span class="hljs-name">Typography</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Typography</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">"body2"</span>&gt;</span>
+            Posts will only be published one an editor approves them
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Typography</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+);
+
+<span class="hljs-keyword">const</span> PostShow = <span class="hljs-function"><span class="hljs-params">props</span> =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Show</span> <span class="hljs-attr">aside</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">Aside</span> /&gt;</span>} {...props}&gt;
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Show</span>&gt;</span></span>
+</code></pre>
+<p>{% endraw %}</p>
+<p>The <code>aside</code> component receives the same props as the <code>Show</code> child component: <code>basePath</code>, <code>record</code>, <code>resource</code>, and <code>version</code>. That means you can display secondary details of the current record in the aside component:</p>
+<p>{% raw %}</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">const</span> Aside = <span class="hljs-function">(<span class="hljs-params">{ record }</span>) =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">width:</span> <span class="hljs-attr">200</span>, <span class="hljs-attr">margin:</span> '<span class="hljs-attr">1em</span>' }}&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Typography</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">"h6"</span>&gt;</span>Post details<span class="hljs-tag">&lt;/<span class="hljs-name">Typography</span>&gt;</span>
+        {record &amp;&amp; (
+            <span class="hljs-tag">&lt;<span class="hljs-name">Typography</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">"body2"</span>&gt;</span>
+                Creation date: {record.createdAt}
+            <span class="hljs-tag">&lt;/<span class="hljs-name">Typography</span>&gt;</span>
+        )}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+);
+</code></pre>
+<p>{% endraw %}</p>
+<p><strong>Tip</strong>: Always test that the <code>record</code> is defined before using it, as react-admin starts rendering the UI before the API call is over.</p>
+<h2><a class="anchor" aria-hidden="true" id="the-showguesser-component"></a><a href="#the-showguesser-component" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The <code>&lt;ShowGuesser&gt;</code> component</h2>
+<p>Instead of a custom <code>Show</code>, you can use the <code>ShowGuesser</code> to determine which fields to use based on the data returned by the API.</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// in src/App.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { Admin, Resource, ShowGuesser } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+<span class="hljs-keyword">import</span> jsonServerProvider <span class="hljs-keyword">from</span> <span class="hljs-string">'ra-data-json-server'</span>;
+
+<span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Admin</span> <span class="hljs-attr">dataProvider</span>=<span class="hljs-string">{jsonServerProvider(</span>'<span class="hljs-attr">http:</span>//<span class="hljs-attr">jsonplaceholder.typicode.com</span>')}&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Resource</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"posts"</span> <span class="hljs-attr">show</span>=<span class="hljs-string">{ShowGuesser}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Admin</span>&gt;</span>
+);
+</span></code></pre>
+<p>Just like <code>Show</code>, <code>ShowGuesser</code> fetches the data. It then analyzes the response, and guesses the fields it should use to display a basic page with the data. It also dumps the components it has guessed in the console, where you can copy it into your own code. Use this feature to quickly bootstrap a <code>Show</code> on top of an existing API, without adding the inputs one by one.</p>
+<p><img src="/ra-doc-usaurus/img/guessed-show.png" alt="Guessed Show"></p>
+<p>React-admin provides guessers for the <code>List</code> view (<code>ListGuesser</code>), the <code>Edit</code> view (<code>EditGuesser</code>), and the <code>Show</code> view (<code>ShowGuesser</code>).</p>
+<p><strong>Tip</strong>: Do not use the guessers in production. They are slower than manually-defined components, because they have to infer types based on the content. Besides, the guesses are not always perfect.</p>
+<h2><a class="anchor" aria-hidden="true" id="the-simpleshowlayout-component"></a><a href="#the-simpleshowlayout-component" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The <code>&lt;SimpleShowLayout&gt;</code> component</h2>
+<p>The <code>&lt;SimpleShowLayout&gt;</code> component receives the <code>record</code> as prop from its parent component. It is responsible for rendering the actual view.</p>
+<p>The <code>&lt;SimpleShowLayout&gt;</code> renders its child components line by line (within <code>&lt;div&gt;</code> components) inside a material-ui <code>&lt;CardContent/&gt;</code>.</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> PostShow = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+    &lt;Show {...props}&gt;
+        &lt;SimpleShowLayout&gt;
+            &lt;TextField source="title" /&gt;
+            &lt;RichTextField source="body" /&gt;
+            &lt;NumberField source="nb_views" /&gt;
+        &lt;/SimpleShowLayout&gt;
+    &lt;/Show&gt;
+);
+</code></pre>
+<p>It accepts a <code>className</code> prop to let you override the style of the <code>&lt;CardContent/&gt;</code>.</p>
+<h2><a class="anchor" aria-hidden="true" id="the-tabbedshowlayout-component"></a><a href="#the-tabbedshowlayout-component" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The <code>&lt;TabbedShowLayout&gt;</code> component</h2>
+<p>Just like <code>&lt;SimpleShowLayout&gt;</code>, <code>&lt;TabbedShowLayout&gt;</code> receives the <code>record</code> prop and renders the actual view. However, the <code>&lt;TabbedShowLayout&gt;</code> component renders fields grouped by tab. The tabs are set by using <code>&lt;Tab&gt;</code> components, which expect a <code>label</code> and an optional <code>icon</code> prop. Switching tabs will update the current url. By default, it uses the tabs indexes and the first tab will be displayed at the root url. You can customize the path by providing a <code>path</code> prop to each <code>Tab</code> component. If you'd like the first one to act as an index page, just omit the <code>path</code> prop.</p>
+<p><img src="/ra-doc-usaurus/img/tabbed-show.gif" alt="tabbed show"></p>
+<p>{% raw %}</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">import</span> { TabbedShowLayout, Tab } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> PostShow = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+    &lt;Show {...props}&gt;
+        &lt;TabbedShowLayout&gt;
+            &lt;Tab label="summary"&gt;
+                &lt;TextField label="Id" source="id" /&gt;
+                &lt;TextField source="title" /&gt;
+                &lt;TextField source="teaser" /&gt;
+            &lt;/Tab&gt;
+            &lt;Tab label="body" path="body"&gt;
+                &lt;RichTextField source="body" addLabel={false} /&gt;
+            &lt;/Tab&gt;
+            &lt;Tab label="Miscellaneous" path="miscellaneous"&gt;
+                &lt;TextField label="Password (if protected post)" source="password" type="password" /&gt;
+                &lt;DateField label="Publication date" source="published_at" /&gt;
+                &lt;NumberField source="average_note" /&gt;
+                &lt;BooleanField label="Allow comments?" source="commentable" defaultValue /&gt;
+                &lt;TextField label="Nb views" source="views" /&gt;
+            &lt;/Tab&gt;
+            &lt;Tab label="comments" path="comments"&gt;
+                &lt;ReferenceManyField reference="comments" target="post_id" addLabel={false}&gt;
+                    &lt;Datagrid&gt;
+                        &lt;TextField source="body" /&gt;
+                        &lt;DateField source="created_at" /&gt;
+                        &lt;EditButton /&gt;
+                    &lt;/Datagrid&gt;
+                &lt;/ReferenceManyField&gt;
+            &lt;/Tab&gt;
+        &lt;/TabbedShowLayout&gt;
+    &lt;/Show&gt;
+);
+</code></pre>
+<p>{% endraw %}</p>
+<p>To style the tabs, the <code>&lt;Tab&gt;</code> component accepts two props:</p>
+<ul>
+<li><code>className</code> is passed to the tab <em>header</em></li>
+<li><code>contentClassName</code> is passed to the tab <em>content</em></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="tabs-element"></a><a href="#tabs-element" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tabs element</h3>
+<p>By default, <code>&lt;TabbedShowLayout&gt;</code> renders its tabs using <code>&lt;TabbedShowLayoutTabs&gt;</code>, an internal react-admin component. You can pass a custom component as the <code>tabs</code> prop to override that default. Also, props passed to <code>&lt;TabbedShowLayoutTabs&gt;</code> are passed to the material-ui's <code>&lt;Tabs&gt;</code> component inside <code>&lt;TabbedShowLayoutTabs&gt;</code>. That means you can create a custom <code>tabs</code> component without copying several components from the react-admin source.</p>
+<p>For instance, to make use of scrollable <code>&lt;Tabs&gt;</code>, you can pass a scrollable props to <code>&lt;TabbedShowLayoutTabs&gt;</code> and use it in the <code>tabs</code> prop from <code>&lt;TabbedShowLayout&gt;</code> as follows:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">import</span> {
+    Show,
+    TabbedShowLayout,
+    TabbedShowLayoutTabs,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-keyword">const</span> ScrollableTabbedShowLayout = <span class="hljs-function"><span class="hljs-params">props</span> =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Show{...props}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">TabbedShowLayout</span> <span class="hljs-attr">tabs</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">TabbedShowLayoutTabs</span> <span class="hljs-attr">scrollable</span>=<span class="hljs-string">{true}/</span>&gt;</span>}&gt;
+            ...
+        <span class="hljs-tag">&lt;/<span class="hljs-name">TabbedShowLayout</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Show</span>&gt;</span>
+);
+
+export default ScrollableTabbedShowLayout;
+
+</span></code></pre>
+<h2><a class="anchor" aria-hidden="true" id="displaying-fields-depending-on-the-user-permissions"></a><a href="#displaying-fields-depending-on-the-user-permissions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Displaying Fields depending on the user permissions</h2>
+<p>You might want to display some fields only to users with specific permissions. Those permissions are retrieved for each route and will provided to your component as a <code>permissions</code> prop.</p>
+<p>Each route will call the <code>authProvider</code> with the <code>AUTH_GET_PERMISSIONS</code> type and some parameters including the current location and route parameters. It's up to you to return whatever you need to check inside your component such as the user's role, etc.</p>
+<p>Here's an example inside a <code>Show</code> view with a <code>SimpleShowLayout</code> and a custom <code>actions</code> component:</p>
+<p>{% raw %}</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">import</span> TopToolbar <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/core/TopToolbar'</span>;
+<span class="hljs-keyword">import</span> Button <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/core/Button'</span>;
+<span class="hljs-keyword">import</span> { EditButton, DeleteButton } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-admin'</span>;
+
+<span class="hljs-keyword">const</span> PostShowActions = <span class="hljs-function">(<span class="hljs-params">{ permissions, basePath, data, resource }</span>) =&gt;</span> (
+    &lt;TopToolbar&gt;
+        &lt;EditButton basePath={basePath} record={data} /&gt;
+        {permissions === 'admin' &amp;&amp;
+            &lt;DeleteButton basePath={basePath} record={data} resource={resource} /&gt;
+        }
+    &lt;/TopToolbar&gt;
+);
+
+export const PostShow = ({ permissions, ...props }) =&gt; (
+    &lt;Show actions={&lt;PostShowActions permissions={permissions} /&gt;} {...props}&gt;
+        &lt;SimpleShowLayout&gt;
+            &lt;TextField source="title" /&gt;
+            &lt;RichTextField source="body" /&gt;
+            {permissions === 'admin' &amp;&amp;
+                &lt;NumberField source="nb_views" /&gt;
+            }
+        &lt;/SimpleShowLayout&gt;
+    &lt;/Show&gt;
+);
+</code></pre>
+<p>{% endraw %}</p>
+<p><strong>Tip</strong> Note how the <code>permissions</code> prop is passed down to the custom <code>actions</code> component.</p>
+<p>This also works inside a <code>TabbedShowLayout</code>, and you can hide a <code>Tab</code> completely:</p>
+<p>{% raw %}</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> UserShow = <span class="hljs-function">(<span class="hljs-params">{ permissions, ...props }</span>) =&gt;</span>
+    &lt;Show {...props}&gt;
+        &lt;TabbedShowLayout&gt;
+            &lt;Tab label="user.form.summary"&gt;
+                {permissions === 'admin' &amp;&amp; &lt;TextField source="id" /&gt;}
+                &lt;TextField source="name" /&gt;
+            &lt;/Tab&gt;
+            {permissions === 'admin' &amp;&amp;
+                &lt;Tab label="user.form.security"&gt;
+                    &lt;TextField source="role" /&gt;
+                &lt;/Tab&gt;}
+        &lt;/TabbedShowLayout&gt;
+    &lt;/Show&gt;;
+</code></pre>
+<p>{% endraw %}</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/ra-doc-usaurus/docs/next/list"><span class="arrow-prev">← </span><span>&lt;List&gt; View</span></a><a class="docs-next button" href="/ra-doc-usaurus/docs/next/fields"><span>&lt;Field&gt; Components</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#the-show-component">The <code>&lt;Show&gt;</code> component</a><ul class="toc-headings"><li><a href="#page-title">Page Title</a></li><li><a href="#actions">Actions</a></li><li><a href="#aside-component">Aside component</a></li></ul></li><li><a href="#the-showguesser-component">The <code>&lt;ShowGuesser&gt;</code> component</a></li><li><a href="#the-simpleshowlayout-component">The <code>&lt;SimpleShowLayout&gt;</code> component</a></li><li><a href="#the-tabbedshowlayout-component">The <code>&lt;TabbedShowLayout&gt;</code> component</a><ul class="toc-headings"><li><a href="#tabs-element">Tabs element</a></li></ul></li><li><a href="#displaying-fields-depending-on-the-user-permissions">Displaying Fields depending on the user permissions</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/ra-doc-usaurus/" class="nav-home"><img src="/ra-doc-usaurus/img/logo.png" alt="React-Admin" width="66" height="58"/></a><div><h5>Docs</h5><a href="/ra-doc-usaurus/docs/en/readme.html">Documentation</a></div><div><h5>Community</h5><a href="https://marmelab.com/fr/blog#react-admin" target="_blank">Blog</a><a href="http://stackoverflow.com/questions/tagged/react-admin" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/marmelab" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/marmelab/react-admin">GitHub</a><a class="github-button" href="https://github.com/marmelab/react-admin" data-icon="octicon-star" data-count-href="/marmelab/react-admin/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2019 Marmelab</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '6778b641ebaffb925970cff06524e0c0',
+                indexName: 'react-admin',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {}
+              });
+            </script><script src="http://localhost:undefined/livereload.js"></script></body></html>
