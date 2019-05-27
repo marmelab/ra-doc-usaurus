@@ -19,11 +19,18 @@ const siteConfig = {
   projectName: 'ra-doc-usaurus',
   organizationName: 'marmelab',
 
+  algolia: {
+    apiKey: '6778b641ebaffb925970cff06524e0c0',
+    indexName: 'react-admin',
+    algoliaOptions: {} // Optional, if provided by Algolia
+  },
+
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     {doc: 'readme', label: 'Documentation'},
     {href: 'https://marmelab.com/fr/blog#react-admin', label: 'Blog'},
     {href: 'https://github.com/marmelab/react-admin', label: 'Github'},
+    { search: true }
   ],
 
 
